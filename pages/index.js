@@ -12,12 +12,26 @@ import web3 from "../public/web3.png"
 import web4 from "../public/web4.png"
 import web5 from "../public/web5.png"
 import web6 from "../public/web6.png"
+import signature from "../public/signature.png"
+import signatureDark from "../public/signature-dark.png"
+
 import { useState } from "react"
 import Link from 'next/link'
+import Typewriter from 'typewriter-effect';
+import { motion, useScroll, useSpring } from "framer-motion";
 
 
 export default function Home() {
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
   const [darkMode, setDarkMode] = useState(false);
+  const signatureSrc = darkMode ? signatureDark : signature; 
+
   return (
     <div className={darkMode ? "dark" : ""}>
       <Head>
@@ -25,20 +39,27 @@ export default function Home() {
       </Head>
 
       <main className='bg-white px-10 md:px-20 lg:px-35 dark:bg-gray-900'>
+        <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
         <section className='min-h-screen'>
-          <nav className='py-10 mb-12 flex justify-between'>
-            <h1 className='text-xl font-bold dark:text-gray-200'>Aneesh Sharma</h1>
-            <ul className='flex items-center'>
+          <nav className='py-10 mb-12 flex justify-between sticky top-0 z-20'>
+            <Image className="scale-75 fill-white" src={signatureSrc}></Image>
+            <ul className='flex items-center gap-7'>
               <li><BsFillMoonStarsFill color="gray" onClick={() => setDarkMode(!darkMode)} className='cursor-pointer text-2xl '></BsFillMoonStarsFill></li>
-              <li><Link className='bg-teal-500 text-white px-4 py-2 rounded-md ml-8' href="/">Home</Link></li>
-              <li><Link className='bg-teal-500 text-white px-4 py-2 rounded-md ml-8' href="/resume">Resume</Link></li>
-              <li><Link className='bg-teal-500 text-white px-4 py-2 rounded-md ml-8' href="/contact">Contact</Link></li>
+              <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/">Home</Link></li>
+              <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/resume">Resume</Link></li>
+              <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/contact">Contact</Link></li>
             </ul>
           </nav>
 
           <div className='text-center p-10 '>
-            <h2 className='text-5xl py-2 text-teal-500 font-bold md:text-6xl'>Aneesh Sharma</h2>
-            <h3 className='text-2xl py-2 md:text-3xl font-medium dark:text-gray-200'>Computer science student.</h3>
+            <div className='text-5xl py-2 text-teal-500 font-bold md:text-6xl'>
+              <Typewriter
+                onInit={(typewriter) => {
+                  typewriter.typeString('aneesh sharma').start()
+                }}
+              />
+            </div>
+            <h3 className='text-2xl py-2 md:text-3xl font-medium dark:text-gray-200'>computer science student</h3>
             <p className='text-md font-medium py-5 leading-8 text-gray-800 md:text-xl max-w-3xl mx-auto dark:text-gray-400'>I'm a <span className='text-teal-500'>junior</span> computer science student at the University of Maryland. With a solid foundation in programming languages like Java, Python, and C, I've honed my problem-solving skills through various personal coding projects and coursework. I'm passionate about tackling real-world challenges using innovative technology. From developing web and mobile applications to exploring artificial intelligence and data analysis, I'm eager to apply my knowledge and skills to make a meaningful impact.</p>
           </div>
 
@@ -47,7 +68,7 @@ export default function Home() {
             <a href="https://github.com/AneeshSharma9" target="_blank"><AiFillGithub /></a>
           </div>
 
-          <div className="relative mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 mt-20 overflow-hidden md:h-96 md:w-96">
+          <div className="relative mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 mt-20 overflow-hidden md:h-96 md:w-96 z-10">
             <Image src={aneesh} layout="fill" objectFit="cover" />
           </div>
         </section>
@@ -55,47 +76,41 @@ export default function Home() {
         {/* Second Page */}
         <section>
           <div>
-            <h3 className='text-3xl py-1 font-medium dark:text-gray-200'>Skills</h3>
+            <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>skills</h3>
             <p className='text-md py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>
               Computer science student looking for <span className='text-teal-500'>internships</span> to gain experience
             </p>
           </div>
 
           <div className='lg:flex gap-10 justify-center '>
-            <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800'>
+            <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
                 <Image src={code} width={100} height={100}></Image>
               </div>
               <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Programming Languages</h3>
-              <p className='py-2 dark:text-gray-200'>
-                Creating elegant designs suited for your needs
-              </p>
+
               <p className='text-gray-800 py-1 dark:text-gray-400'>Java / Kotlin</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>C</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Python</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>JavaScript</p>
             </div>
 
-            <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800'>
+            <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
                 <Image src={design} width={100} height={100}></Image>
-              </div>              <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Technologies</h3>
-              <p className='py-2 dark:text-gray-200'>
-                Creating elegant designs suited for your needs
-              </p>
+              </div>
+              <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Technologies</h3>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Pandas</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>React</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Flask</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Node</p>
             </div>
 
-            <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800'>
+            <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
                 <Image src={consulting} width={100} height={100}></Image>
-              </div>              <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Tools</h3>
-              <p className='py-2 dark:text-gray-200'>
-                Creating elegant designs suited for your needs
-              </p>
+              </div>
+              <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Tools</h3>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Visual Studio Code</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>GitHub</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Amazon Web Services</p>
@@ -106,7 +121,7 @@ export default function Home() {
 
         <section>
           <div>
-            <h3 className='text-3xl py-1 font-medium dark:text-gray-200'>Portfolio</h3>
+            <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>portfolio</h3>
             <p className='text-gray-800 py-1 font-medium dark:text-gray-400'>Take a look at some of my projects</p>
           </div>
           <div className='flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap'>

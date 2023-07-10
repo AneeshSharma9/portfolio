@@ -6,12 +6,21 @@ import Image from "next/image"
 import { BsFillMoonStarsFill } from 'react-icons/bs'
 import { useState } from "react"
 import { Timeline } from 'flowbite-react';
+import signature from "../public/signature.png"
+import signatureDark from "../public/signature-dark.png"
 import umdLogo from "../public/university-of-maryland-logo-vector-1.png"
-
-
+import Typewriter from 'typewriter-effect';
+import { motion, useScroll, useSpring } from "framer-motion";
 
 export default function Resume() {
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
     const [darkMode, setDarkMode] = useState(false);
+    const signatureSrc = darkMode ? signatureDark : signature; 
 
     return (
         <div className={darkMode ? "dark" : ""}>
@@ -19,23 +28,30 @@ export default function Resume() {
                 <title>Aneesh Sharma Resume</title>
             </Head>
             <main className='bg-white px-10 md:px-20 lg:px-35 dark:bg-gray-900'>
+                <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
                 <section className='min-h-screen'>
-                    <nav className='py-10 mb-12 flex justify-between'>
-                        <h1 className='text-xl font-bold dark:text-gray-200'>Aneesh Sharma</h1>
-                        <ul className='flex items-center'>
+                    <nav className='py-10 mb-12 flex justify-between sticky top-0'>
+                        <Image className="scale-75" src={signatureSrc}></Image>
+                        <ul className='flex items-center gap-7'>
                             <li><BsFillMoonStarsFill color="gray" onClick={() => setDarkMode(!darkMode)} className='cursor-pointer text-2xl '></BsFillMoonStarsFill></li>
-                            <li><Link className='bg-teal-500 text-white px-4 py-2 rounded-md ml-8' href="/">Home</Link></li>
-                            <li><Link className='bg-teal-500 text-white px-4 py-2 rounded-md ml-8' href="/resume">Resume</Link></li>
-                            <li><Link className='bg-teal-500 text-white px-4 py-2 rounded-md ml-8' href="/contact">Contact</Link></li>
+                            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/">Home</Link></li>
+                            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/resume">Resume</Link></li>
+                            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/contact">Contact</Link></li>
                         </ul>
                     </nav>
 
                     <div className='text-center p-10 '>
-                        <h2 className='text-5xl py-2 text-teal-500 font-bold md:text-6xl'>Resume</h2>
+                        <div className='text-5xl py-2 text-teal-500 font-bold md:text-6xl'>
+                            <Typewriter
+                                onInit={(typewriter) => {
+                                    typewriter.typeString('resume').start()
+                                }}
+                            />
+                        </div>
                     </div>
 
                     <div className='max-w-4xl mx-auto '>
-                        <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>Professional Experience</h3>
+                        <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>professional experience</h3>
                         <Timeline >
                             <Timeline.Item>
                                 <Timeline.Point />
@@ -96,17 +112,20 @@ export default function Resume() {
                     </div>
 
                     <div className='max-w-4xl mx-auto '>
-                        <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>Education</h3>
-                        <div className='flex justify-between'>
+                        <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>education</h3>
+                        <div className='flex items-center gap-5'>
                             <Image src={umdLogo} width={100} height={100}></Image>
-                            <p>2021-2025</p>
-                            <p>University of Maryland, College Park, Maryland</p>
+                            <div className='dark:text-gray-400'>
+                                <p>2021-2025</p>
+                                <p>University of Maryland, College Park, Maryland</p>
+                            </div>
+
                         </div>
                     </div>
 
                     <div className='max-w-4xl mx-auto'>
-                        <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>Coursework</h3>
-                        <ul>
+                        <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>coursework</h3>
+                        <ul className='dark:text-gray-400'>
                             <li className='mb-3'>Object-Oriented Programming I</li>
                             <li className='mb-3'>Object-Oriented Programming II</li>
                             <li className='mb-3'>Introduction to Computer Systems</li>
@@ -115,6 +134,14 @@ export default function Resume() {
                             <li className='mb-3'>Algorithms</li>
                             <li className='mb-3'>Introduction to Compilers</li>
                             <li className='mb-3'>Introduction to Data Science</li>
+                        </ul>
+                    </div>
+
+                    <div className='max-w-4xl mx-auto'>
+                        <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>other</h3>
+                        <ul className='dark:text-gray-400'>
+                            <li className='mb-3'>Member of the Students for the Exploration and Development of Space @ UMD</li>
+                            <li className='mb-3'>Member of the South Asian Student Association</li>
                         </ul>
                     </div>
                 </section>
