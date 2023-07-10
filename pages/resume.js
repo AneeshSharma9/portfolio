@@ -22,6 +22,8 @@ export default function Resume() {
     const [darkMode, setDarkMode] = useState(false);
     const signatureSrc = darkMode ? signatureDark : signature; 
 
+    
+
     return (
         <div className={darkMode ? "dark" : ""}>
             <Head>

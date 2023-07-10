@@ -15,10 +15,11 @@ import web6 from "../public/web6.png"
 import signature from "../public/signature.png"
 import signatureDark from "../public/signature-dark.png"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from 'next/link'
 import Typewriter from 'typewriter-effect';
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 
 export default function Home() {
@@ -30,7 +31,26 @@ export default function Home() {
     restDelta: 0.001
   });
   const [darkMode, setDarkMode] = useState(false);
-  const signatureSrc = darkMode ? signatureDark : signature; 
+  const signatureSrc = darkMode ? signatureDark : signature;
+
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+    triggerOnce: false
+  });
+
+  const [ref2, inView2] = useInView({
+    threshold: 0.2,
+    triggerOnce: false
+  });
+
+  const variants = {
+    visible: { opacity: 1, scale: 1, y: 0 },
+    hidden: {
+      opacity: 0,
+      scale: 0.65,
+      y: 50
+    }
+  };
 
   return (
     <div className={darkMode ? "dark" : ""}>
@@ -74,15 +94,23 @@ export default function Home() {
         </section>
 
         {/* Second Page */}
-        <section>
-          <div>
+        <section >
+          <motion.div animate={inView ? "visible" : "hidden"}
+            variants={variants}
+            exit="hidden"
+            transition={{ duration: 1, ease: "easeOut" }}
+            ref={ref}>
             <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>skills</h3>
             <p className='text-md py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>
               Computer science student looking for <span className='text-teal-500'>internships</span> to gain experience
             </p>
-          </div>
+          </motion.div>
 
-          <div className='lg:flex gap-10 justify-center '>
+          <motion.div className='lg:flex gap-10 justify-center' animate={inView ? "visible" : "hidden"}
+            variants={variants}
+            exit="hidden"
+            transition={{ duration: 1, ease: "easeOut" }}
+            ref={ref}>
             <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
                 <Image src={code} width={100} height={100}></Image>
@@ -116,34 +144,40 @@ export default function Home() {
               <p className='text-gray-800 py-1 dark:text-gray-400'>Amazon Web Services</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Android Studio</p>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         <section>
-          <div>
-            <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>portfolio</h3>
-            <p className='text-gray-800 py-1 font-medium dark:text-gray-400'>Take a look at some of my projects</p>
-          </div>
-          <div className='flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap'>
-            <div className='basis-1/3 flex-1'>
-              <Image src={web1} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
+          <motion.div animate={inView2 ? "visible" : "hidden"}
+            variants={variants}
+            exit="hidden"
+            transition={{ duration: 1, ease: "easeOut" }}
+            ref={ref2}>
+            <div>
+              <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>portfolio</h3>
+              <p className='text-gray-800 py-1 font-medium dark:text-gray-400'>Take a look at some of my projects</p>
             </div>
-            <div className='basis-1/3 flex-1'>
-              <Image src={web2} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
+            <div className='flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap'>
+              <div className='basis-1/3 flex-1'>
+                <Image src={web1} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
+              </div>
+              <div className='basis-1/3 flex-1'>
+                <Image src={web2} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
+              </div>
+              <div className='basis-1/3 flex-1'>
+                <Image src={web3} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
+              </div>
+              <div className='basis-1/3 flex-1'>
+                <Image src={web4} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
+              </div>
+              <div className='basis-1/3 flex-1'>
+                <Image src={web5} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
+              </div>
+              <div className='basis-1/3 flex-1'>
+                <Image src={web6} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
+              </div>
             </div>
-            <div className='basis-1/3 flex-1'>
-              <Image src={web3} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
-            </div>
-            <div className='basis-1/3 flex-1'>
-              <Image src={web4} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
-            </div>
-            <div className='basis-1/3 flex-1'>
-              <Image src={web5} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
-            </div>
-            <div className='basis-1/3 flex-1'>
-              <Image src={web6} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
-            </div>
-          </div>
+          </motion.div>
         </section>
       </main>
     </div>
