@@ -23,6 +23,41 @@ import { useInView } from "react-intersection-observer";
 
 
 export default function Home() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  // check and reset theme when `darkMode` changes
+  useEffect(() => {
+    themeCheck();
+  }, [darkMode]);
+
+  // check theme on component mount
+  useEffect(() => {
+    themeCheck();
+  }, []);
+
+  // check and reset theme
+  const themeCheck = () => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+      setDarkMode(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setDarkMode(false);
+    }
+  }
+
+  // toggle dark mode
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    localStorage.theme = newMode ? "dark" : "light";
+    setDarkMode(newMode);
+  };
+
+  const signatureSrc = darkMode ? signatureDark : signature;
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -30,8 +65,6 @@ export default function Home() {
     damping: 30,
     restDelta: 0.001
   });
-  const [darkMode, setDarkMode] = useState(false);
-  const signatureSrc = darkMode ? signatureDark : signature;
 
   const [ref, inView] = useInView({
     threshold: 0.5,
@@ -64,7 +97,7 @@ export default function Home() {
           <nav className='py-10 mb-12 flex justify-between sticky top-0 z-20'>
             <Image className="scale-75 fill-white" src={signatureSrc}></Image>
             <ul className='flex items-center gap-7'>
-              <li><BsFillMoonStarsFill color="gray" onClick={() => setDarkMode(!darkMode)} className='cursor-pointer text-2xl '></BsFillMoonStarsFill></li>
+              <li><BsFillMoonStarsFill color="gray" onClick={toggleDarkMode} className='cursor-pointer text-2xl '></BsFillMoonStarsFill></li>
               <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/">Home</Link></li>
               <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/resume">Resume</Link></li>
               <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/contact">Contact</Link></li>
