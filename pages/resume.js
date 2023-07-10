@@ -131,7 +131,7 @@ export default function Resume() {
                                             Software Engineering Intern
                                         </Timeline.Title>
                                         <Timeline.Body>
-                                            <ul className='px-5' style={{ listStyleType: 'circle' }}>
+                                            <ul className='px-5 text-gray-800 dark:text-gray-400' style={{ listStyleType: 'circle' }}>
                                                 <li>Designed and developed an <span className='text-teal-500 font-bold'>Android application</span> that streamlined the process of capturing and labeling pictures for employees, improving efficiency and accuracy in data management.</li>
                                                 <li>Integrated Dropbox API into the Android app, automating the upload process and enabling seamless synchronization of labeled pictures to a shared Dropbox folder for convenient access and collaboration.</li>
                                                 <li>Created <span className='text-teal-500 font-bold'>Python scripts</span> leveraging the Pandas and Excel libraries to automate various manual tasks for employees, significantly reducing the time and effort required for data processing and analysis by <span className='text-teal-500 font-bold'>95%</span>.</li>
@@ -149,7 +149,7 @@ export default function Resume() {
                                             Software Engineering Intern
                                         </Timeline.Title>
                                         <Timeline.Body>
-                                            <ul className='px-5' style={{ listStyleType: 'circle' }}>
+                                            <ul className='px-5 text-gray-800 dark:text-gray-400' style={{ listStyleType: 'circle' }}>
                                                 <li>Developed automated test scripts using <span className='text-teal-500 font-bold'>Java and Selenium WebDriver</span>, enhancing the efficiency and accuracy of software testing processes.</li>
                                                 <li>Collaborated with the development team to design and implement custom applications using <span className='text-teal-500 font-bold'>SerivceNow and JavaScript</span>, resulting in streamlined workflows and improved user experience.</li>
                                                 <li>Maintained and expanded a comprehensive testing framework for web applications, ensuring high-quality software releases and reducing manual testing efforts by <span className='text-teal-500 font-bold'>90%</span>.</li>
@@ -168,7 +168,7 @@ export default function Resume() {
                                             Programming Tutor
                                         </Timeline.Title>
                                         <Timeline.Body>
-                                            <ul className='px-5' style={{ listStyleType: 'circle' }}>
+                                            <ul className='px-5 text-gray-800 dark:text-gray-400' style={{ listStyleType: 'circle' }}>
                                                 <li>Designed and delivered engaging computer science lessons to students of varying ages, introducing them to the fundamentals of coding through languages such as JavaScript, Python, <span className='text-teal-500 font-bold'>Unity</span>, Minecraft modding, and Scratch.</li>
                                                 <li>Developed age-appropriate curriculum and instructional materials to facilitate hands-on learning experiences, ensuring students grasped coding concepts effectively while fostering creativity and problem-solving skills.</li>
                                                 <li>Implemented innovative teaching methodologies, including project-based learning and interactive coding exercises, to make complex programming concepts accessible and engaging for students.</li>
@@ -190,7 +190,7 @@ export default function Resume() {
                         <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>education</h3>
                         <div className='flex items-center gap-5 py-5'>
                             <Image src={umdLogo} width={100} height={100}></Image>
-                            <div className='dark:text-gray-400'>
+                            <div className='text-gray-800 dark:text-gray-400'>
                                 <p className='font-bold'>Bachelor of Computer Science</p>
                                 <p>2021-2025</p>
                                 <p>University of Maryland, College Park, Maryland</p>
@@ -198,7 +198,7 @@ export default function Resume() {
                         </div>
                         <div className='flex items-center gap-5 py-5'>
                             <Image src={mcstLogo} width={100} height={100}></Image>
-                            <div className='dark:text-gray-400'>
+                            <div className='text-gray-800 dark:text-gray-400'>
                                 <p className='font-bold'>Academy of Computer & Information Sciences</p>
                                 <p>2017-2021</p>
                                 <p>Morris County School of Technology, Denville, New Jersey</p>
@@ -214,7 +214,7 @@ export default function Resume() {
                         transition={{ duration: 0.5, ease: "easeOut" }}
                         ref={ref2}>
                         <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>coursework</h3>
-                        <ul className='dark:text-gray-400'>
+                        <ul className='text-gray-800 dark:text-gray-400'>
                             <li className='mb-3'>Object-Oriented Programming I</li>
                             <li className='mb-3'>Object-Oriented Programming II</li>
                             <li className='mb-3'>Introduction to Computer Systems</li>
@@ -234,7 +234,7 @@ export default function Resume() {
                         transition={{ duration: 0.5, ease: "easeOut" }}
                         ref={ref3}>
                         <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>other</h3>
-                        <ul className='dark:text-gray-400'>
+                        <ul className='text-gray-800 dark:text-gray-400'>
                             <li className='mb-3'>Member of the Students for the Exploration and Development of Space @ UMD</li>
                             <li className='pb-96'>Member of the South Asian Student Association</li>
                         </ul>
