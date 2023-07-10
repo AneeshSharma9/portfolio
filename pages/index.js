@@ -14,6 +14,7 @@ import web5 from "../public/web5.png"
 import web6 from "../public/web6.png"
 import signature from "../public/signature.png"
 import signatureDark from "../public/signature-dark.png"
+import { data } from "../data/data.js";
 
 import { useState, useEffect } from "react"
 import Link from 'next/link'
@@ -25,17 +26,14 @@ import { useInView } from "react-intersection-observer";
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
 
-  // check and reset theme when `darkMode` changes
   useEffect(() => {
     themeCheck();
   }, [darkMode]);
 
-  // check theme on component mount
   useEffect(() => {
     themeCheck();
   }, []);
 
-  // check and reset theme
   const themeCheck = () => {
     if (
       localStorage.theme === "dark" ||
@@ -50,12 +48,13 @@ export default function Home() {
     }
   }
 
-  // toggle dark mode
   const toggleDarkMode = () => {
     const newMode = !darkMode;
     localStorage.theme = newMode ? "dark" : "light";
     setDarkMode(newMode);
   };
+
+  const symbol = darkMode ? "🌙" : "☀️";
 
   const signatureSrc = darkMode ? signatureDark : signature;
 
@@ -66,13 +65,18 @@ export default function Home() {
     restDelta: 0.001
   });
 
+  const [ref0, inView0] = useInView({
+    threshold: 0.1,
+    triggerOnce: false
+  });
+
   const [ref, inView] = useInView({
-    threshold: 0.5,
+    threshold: 0.1,
     triggerOnce: false
   });
 
   const [ref2, inView2] = useInView({
-    threshold: 0.2,
+    threshold: 0.1,
     triggerOnce: false
   });
 
@@ -85,6 +89,8 @@ export default function Home() {
     }
   };
 
+  const project = data;
+
   return (
     <div className={darkMode ? "dark" : ""}>
       <Head>
@@ -95,54 +101,60 @@ export default function Home() {
         <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
         <section className='min-h-screen'>
           <nav className='py-10 mb-12 flex justify-between sticky top-0 z-20'>
-            <Image className="scale-75 fill-white" src={signatureSrc}></Image>
+            <Image className="scale-50 fill-white md:scale-75" src={signatureSrc}></Image>
             <ul className='flex items-center gap-7'>
-              <li><BsFillMoonStarsFill color="gray" onClick={toggleDarkMode} className='cursor-pointer text-2xl '></BsFillMoonStarsFill></li>
+              <li><h2 onClick={toggleDarkMode} className='cursor-pointer text-2xl'>{symbol}</h2></li>
               <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/">Home</Link></li>
               <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/resume">Resume</Link></li>
               <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/contact">Contact</Link></li>
             </ul>
           </nav>
 
-          <div className='text-center p-10 '>
-            <div className='text-5xl py-2 text-teal-500 font-bold md:text-6xl'>
-              <Typewriter
-                onInit={(typewriter) => {
-                  typewriter.typeString('aneesh sharma').start()
-                }}
-              />
+          <motion.div animate={inView0 ? "visible" : "hidden"}
+            variants={variants}
+            exit="hidden"
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            ref={ref0}>
+            <div className='text-center p-10 '>
+              <div className='text-5xl py-2 text-teal-500 font-bold md:text-6xl'>
+                <Typewriter
+                  onInit={(typewriter) => {
+                    typewriter.typeString('aneesh sharma').start()
+                  }}
+                />
+              </div>
+              <h3 className='text-2xl py-2 md:text-3xl font-medium dark:text-gray-200'>computer science student</h3>
+              <p className='text-md font-medium py-5 leading-8 text-gray-800 md:text-xl max-w-3xl mx-auto dark:text-gray-400'>I'm a <span className='text-teal-500'>junior</span> computer science student at the University of Maryland. With a solid foundation in programming languages like Java, Python, and C, I've honed my problem-solving skills through various personal coding projects and coursework. I'm passionate about tackling real-world challenges using innovative technology. From developing web and mobile applications to exploring artificial intelligence and data analysis, I'm eager to apply my knowledge and skills to make a meaningful impact.</p>
             </div>
-            <h3 className='text-2xl py-2 md:text-3xl font-medium dark:text-gray-200'>computer science student</h3>
-            <p className='text-md font-medium py-5 leading-8 text-gray-800 md:text-xl max-w-3xl mx-auto dark:text-gray-400'>I'm a <span className='text-teal-500'>junior</span> computer science student at the University of Maryland. With a solid foundation in programming languages like Java, Python, and C, I've honed my problem-solving skills through various personal coding projects and coursework. I'm passionate about tackling real-world challenges using innovative technology. From developing web and mobile applications to exploring artificial intelligence and data analysis, I'm eager to apply my knowledge and skills to make a meaningful impact.</p>
-          </div>
 
-          <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400'>
-            <a href="https://www.linkedin.com/in/aneeshsharma9/" target="_blank"><AiFillLinkedin /></a>
-            <a href="https://github.com/AneeshSharma9" target="_blank"><AiFillGithub /></a>
-          </div>
+            <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400'>
+              <a href="https://www.linkedin.com/in/aneeshsharma9/" target="_blank"><AiFillLinkedin /></a>
+              <a href="https://github.com/AneeshSharma9" target="_blank"><AiFillGithub /></a>
+            </div>
 
-          <div className="relative mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 mt-20 overflow-hidden md:h-96 md:w-96 z-10">
-            <Image src={aneesh} layout="fill" objectFit="cover" />
-          </div>
+            <div className="relative mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 mt-20 overflow-hidden md:h-96 md:w-96 z-10">
+              <Image src={aneesh} layout="fill" objectFit="cover" />
+            </div>
+          </motion.div>
         </section>
 
         {/* Second Page */}
-        <section >
+        <section className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
           <motion.div animate={inView ? "visible" : "hidden"}
             variants={variants}
             exit="hidden"
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             ref={ref}>
             <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>skills</h3>
             <p className='text-md py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>
-              Computer science student looking for <span className='text-teal-500'>internships</span> to gain experience
+              some of my most <span className='text-teal-500'>prominent</span> skills and technologies
             </p>
           </motion.div>
 
           <motion.div className='lg:flex gap-10 justify-center' animate={inView ? "visible" : "hidden"}
             variants={variants}
             exit="hidden"
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             ref={ref}>
             <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
@@ -186,28 +198,35 @@ export default function Home() {
             exit="hidden"
             transition={{ duration: 1, ease: "easeOut" }}
             ref={ref2}>
-            <div>
-              <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>portfolio</h3>
-              <p className='text-gray-800 py-1 font-medium dark:text-gray-400'>Take a look at some of my projects</p>
-            </div>
-            <div className='flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap'>
-              <div className='basis-1/3 flex-1'>
-                <Image src={web1} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
-              </div>
-              <div className='basis-1/3 flex-1'>
-                <Image src={web2} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
-              </div>
-              <div className='basis-1/3 flex-1'>
-                <Image src={web3} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
-              </div>
-              <div className='basis-1/3 flex-1'>
-                <Image src={web4} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
-              </div>
-              <div className='basis-1/3 flex-1'>
-                <Image src={web5} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
-              </div>
-              <div className='basis-1/3 flex-1'>
-                <Image src={web6} className='rounded-lg object-cover' width={'100%'} height={'100%'} layout="responsive"></Image>
+            <div name='work' className='w-full md:h-screen text-gray-300'>
+              <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+                <div className=''>
+                  <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>projects</h3>
+                  <p className='text-md py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>check out some of my recent <span className='text-teal-500'>personal projects</span></p>
+                </div>
+
+                <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 py-5">
+                  {project.map((item, index) => (
+                    <div
+                      key={index}
+                      style={{}}
+                      className="shadow-lg p-10 rounded-xl group container justify-center text-center items-center mx-auto content-div dark:bg-gray-800">
+                      <div className="" >
+                        <span className="text-2xl font-bold dark:text-gray-300 tracking-wider text-gray-800 py-1 px-1" >
+                          {item.name}
+                        </span>
+                        <Image src={item.image}></Image>
+                        <div className=" text-center ">
+                          <a href={item.github} target="_blank">
+                            <button className="hover:bg-gray-200 dark:hover:bg-gray-600 shadow-lg text-center rounded-lg px-4 py-3 m-2 bg-gray-100 dark:bg-gray-700 text-gray-600  dark:text-gray-400 font-bold text-lg">
+                              Code
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
