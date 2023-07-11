@@ -91,9 +91,12 @@ export default function Home() {
 
       <main className='w-full min-w-full mx-auto bg-white lg:px-35 dark:bg-gray-900 '>
         <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
-        <nav className='py-2 2xl:py-7 mb-12 2xl:px-10 flex justify-between sticky top-0 z-20 mx-auto bg-gray-100 dark:bg-gray-800 shadow-lg 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-none'>
-          <Image className="scale-50 fill-white md:scale-75" src={signatureSrc} alt="signatureLogo"></Image>
-          <ul className='flex items-center gap-7'>
+        <nav className='md:flex py-2 2xl:py-7 mb-12 2xl:px-10 md:justify-between sticky top-0 z-20 mx-auto bg-gray-100 dark:bg-gray-800 shadow-lg 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-none'>
+          <div className='flex justify-center md:justify-normal'>
+            <Image className="scale-50 md:scale-75" src={signatureSrc} alt="signatureLogo"></Image>
+          </div>
+
+          <ul className='flex items-center gap-7 justify-center px-5'>
             <li><h2 onClick={toggleDarkMode} className='cursor-pointer text-2xl'>{symbol}</h2></li>
             <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/">Home</Link></li>
             <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/resume">Resume</Link></li>
@@ -127,7 +130,7 @@ export default function Home() {
             </div>
 
             <div className="relative mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 mt-20 overflow-hidden md:h-96 md:w-96 z-10">
-              <Image src={aneesh} objectFit="cover" alt="pfp"/>
+              <Image src={aneesh} alt="pfp" priority={true} />
             </div>
           </motion.div>
         </section>
