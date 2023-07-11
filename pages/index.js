@@ -1,25 +1,17 @@
 import Head from 'next/head'
-import { BsFillMoonStarsFill } from 'react-icons/bs'
-import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai'
+import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from 'react-icons/ai'
 import Image from "next/image"
 import aneesh from "../public/pfp.png"
-import design from "../public/design.png"
-import code from "../public/code.png"
-import consulting from "../public/consulting.png"
-import web1 from "../public/web1.png"
-import web2 from "../public/web2.png"
-import web3 from "../public/web3.png"
-import web4 from "../public/web4.png"
-import web5 from "../public/web5.png"
-import web6 from "../public/web6.png"
+import tools from "../public/tools.png"
+import programming from "../public/programming.png"
+import technologies from "../public/technologies.png"
 import signature from "../public/signature.png"
 import signatureDark from "../public/signature-dark.png"
 import { data } from "../data/data.js";
-
 import { useState, useEffect } from "react"
 import Link from 'next/link'
 import Typewriter from 'typewriter-effect';
-import { motion, useScroll, useSpring, useAnimation } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 
@@ -97,18 +89,19 @@ export default function Home() {
         <title>Aneesh Sharma Portfolio</title>
       </Head>
 
-      <main className='bg-white sm:px-5 md:px-20 lg:px-35 dark:bg-gray-900'>
+      <main className='bg-white lg:px-35 dark:bg-gray-900 '>
         <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
-        <section className='min-h-screen'>
-          <nav className='py-10 mb-12 flex justify-between sticky top-0 z-20'>
-            <Image className="scale-50 fill-white md:scale-75" src={signatureSrc}></Image>
-            <ul className='flex items-center gap-7'>
-              <li><h2 onClick={toggleDarkMode} className='cursor-pointer text-2xl'>{symbol}</h2></li>
-              <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/">Home</Link></li>
-              <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/resume">Resume</Link></li>
-              <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/contact">Contact</Link></li>
-            </ul>
-          </nav>
+        <nav className='py-2 2xl:py-7 mb-12 2xl:px-10 flex justify-between sticky top-0 z-20 w-full mx-auto bg-gray-100 dark:bg-gray-800 2xl:bg-transparent 2xl:dark:bg-transparent shadow-lg 2xl:shadow-none'>
+          <Image className="scale-50 fill-white md:scale-75" src={signatureSrc}></Image>
+          <ul className='flex items-center gap-7'>
+            <li><h2 onClick={toggleDarkMode} className='cursor-pointer text-2xl'>{symbol}</h2></li>
+            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/">Home</Link></li>
+            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/resume">Resume</Link></li>
+            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/contact">Contact</Link></li>
+          </ul>
+        </nav>
+        <section className='min-h-screen w-full mx-auto'>
+
 
           <motion.div animate={inView0 ? "visible" : "hidden"}
             variants={variants}
@@ -129,6 +122,7 @@ export default function Home() {
 
             <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400'>
               <a href="https://www.linkedin.com/in/aneeshsharma9/" target="_blank"><AiFillLinkedin /></a>
+              <a href="https://www.instagram.com/aneesh._.sharma/?hl=en" target="_blank"><AiFillInstagram /></a>
               <a href="https://github.com/AneeshSharma9" target="_blank"><AiFillGithub /></a>
             </div>
 
@@ -141,7 +135,7 @@ export default function Home() {
         <div className='py-10'></div>
 
         {/* Second Page */}
-        <section className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+        <section className='max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto p-4 flex flex-col justify-center w-full h-full'>
           <motion.div animate={inView ? "visible" : "hidden"}
             variants={variants}
             exit="hidden"
@@ -152,7 +146,7 @@ export default function Home() {
               some of my most <span className='text-teal-500'>significant</span> skills and technologies
             </p>
           </motion.div>
-          
+
 
           <motion.div className='lg:flex gap-10 justify-center' animate={inView ? "visible" : "hidden"}
             variants={variants}
@@ -161,7 +155,7 @@ export default function Home() {
             ref={ref}>
             <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
-                <Image src={code} width={100} height={100}></Image>
+                <Image src={programming} width={100} height={100}></Image>
               </div>
               <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Programming Languages</h3>
 
@@ -173,7 +167,7 @@ export default function Home() {
 
             <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
-                <Image src={design} width={100} height={100}></Image>
+                <Image src={technologies} width={100} height={100}></Image>
               </div>
               <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Technologies</h3>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Pandas</p>
@@ -184,7 +178,7 @@ export default function Home() {
 
             <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
-                <Image src={consulting} width={100} height={100}></Image>
+                <Image src={tools} width={100} height={100}></Image>
               </div>
               <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Tools</h3>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Visual Studio Code</p>
@@ -202,7 +196,7 @@ export default function Home() {
             transition={{ duration: 1, ease: "easeOut" }}
             ref={ref2}>
             <div name='work' className='w-full md:h-screen text-gray-300'>
-              <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+              <div className='max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto p-4 flex flex-col justify-center w-full h-full'>
                 <div className=''>
                   <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>projects</h3>
                   <p className='text-md md:text-xl py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>check out some of my recent <span className='text-teal-500'>personal projects</span></p>

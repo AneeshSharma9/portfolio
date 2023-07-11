@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Head from 'next/head'
 import Image from "next/image"
-import { BsFillMoonStarsFill } from 'react-icons/bs'
 import { useState, useEffect } from "react"
 import { Timeline } from 'flowbite-react';
 import signature from "../public/signature.png"
@@ -11,7 +10,7 @@ import signatureDark from "../public/signature-dark.png"
 import umdLogo from "../public/university-of-maryland-logo-vector-1.png"
 import mcstLogo from "../public/mcst.logo.png"
 import Typewriter from 'typewriter-effect';
-import { motion, useScroll, useSpring, useAnimation } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 export default function Resume() {
@@ -57,22 +56,22 @@ export default function Resume() {
     });
 
     const [ref0, inView0] = useInView({
-        threshold: 0.3,
+        threshold: 0.2,
         triggerOnce: false
     });
 
     const [ref1, inView1] = useInView({
-        threshold: 0.3,
+        threshold: 0.2,
         triggerOnce: false
     });
 
     const [ref2, inView2] = useInView({
-        threshold: 0.3,
+        threshold: 0.2,
         triggerOnce: false
     });
 
     const [ref3, inView3] = useInView({
-        threshold: 0.3,
+        threshold: 0.2,
         triggerOnce: false
     });
 
@@ -90,10 +89,10 @@ export default function Resume() {
             <Head>
                 <title>Aneesh Sharma Resume</title>
             </Head>
-            <main className='bg-white sm:px-5 md:px-20 lg:px-35 dark:bg-gray-900'>
+            <main className='bg-white lg:px-35 dark:bg-gray-900'>
                 <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
                 <section className='min-h-screen'>
-                    <nav className='py-10 mb-12 flex justify-between sticky top-0'>
+                    <nav className='py-2 2xl:py-7 mb-12 2xl:px-10 flex justify-between sticky top-0 z-20 w-full mx-auto bg-gray-100 dark:bg-gray-800 2xl:bg-transparent 2xl:dark:bg-transparent shadow-lg 2xl:shadow-none'>
                         <Image className="scale-50 fill-white md:scale-75" src={signatureSrc}></Image>
                         <ul className='flex items-center gap-7'>
                             <li><h2 onClick={toggleDarkMode} className='cursor-pointer text-2xl'>{symbol}</h2></li>
@@ -118,71 +117,73 @@ export default function Resume() {
                             </div>
                         </div>
 
-                        <div className='max-w-4xl mx-auto '>
-                            <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>professional experience</h3>
-                            <Timeline >
-                                <Timeline.Item>
-                                    <Timeline.Point />
-                                    <Timeline.Content>
-                                        <Timeline.Time>
-                                            June 2023 - Present
-                                        </Timeline.Time>
-                                        <Timeline.Title>
-                                            Software Engineering Intern @ <span className='text-cyan-400 font-bold'>Medley Networks Inc.</span>
-                                        </Timeline.Title>
-                                        <Timeline.Body>
-                                            <ul className='px-5 text-md text-gray-800 dark:text-gray-400 leading-7 ' style={{ listStyleType: 'circle' }}>
-                                                <li>Designed and developed an <span className='text-teal-500 font-bold'>Android application</span> that streamlined the process of capturing and labeling pictures for employees, improving efficiency and accuracy in data management.</li>
-                                                <li>Integrated Dropbox API into the Android app, automating the upload process and enabling seamless synchronization of labeled pictures to a shared Dropbox folder for convenient access and collaboration.</li>
-                                                <li>Created <span className='text-teal-500 font-bold'>Python scripts</span> leveraging the Pandas and Excel libraries to automate various manual tasks for employees, significantly reducing the time and effort required for data processing and analysis by <span className='text-teal-500 font-bold'>95%</span>.</li>
-                                            </ul>
-                                        </Timeline.Body>
-                                    </Timeline.Content>
-                                </Timeline.Item>
-                                <Timeline.Item>
-                                    <Timeline.Point />
-                                    <Timeline.Content>
-                                        <Timeline.Time>
-                                            September 2020 - August 2021
-                                        </Timeline.Time>
-                                        <Timeline.Title>
-                                            Software Engineering Intern @ <span className='text-cyan-400 font-bold'>Prudential Financial</span>
-                                        </Timeline.Title>
-                                        <Timeline.Body>
-                                            <ul className='px-5 text-gray-800 dark:text-gray-400 leading-7' style={{ listStyleType: 'circle' }}>
-                                                <li>Developed automated test scripts using <span className='text-teal-500 font-bold'>Java and Selenium WebDriver</span>, enhancing the efficiency and accuracy of software testing processes.</li>
-                                                <li>Collaborated with the development team to design and implement custom applications using <span className='text-teal-500 font-bold'>SerivceNow and JavaScript</span>, resulting in streamlined workflows and improved user experience.</li>
-                                                <li>Maintained and expanded a comprehensive testing framework for web applications, ensuring high-quality software releases and reducing manual testing efforts by <span className='text-teal-500 font-bold'>90%</span>.</li>
-                                                <li>Utilized <span className='text-teal-500 font-bold'>Tableau</span> to analyze and visualize data related to service requests, enabling stakeholders to make data-driven decisions and identify areas for process optimization.</li>
-                                            </ul>
-                                        </Timeline.Body>
-                                    </Timeline.Content>
-                                </Timeline.Item>
-                                <Timeline.Item>
-                                    <Timeline.Point />
-                                    <Timeline.Content>
-                                        <Timeline.Time>
-                                            July 2020 - August 2021
-                                        </Timeline.Time>
-                                        <Timeline.Title>
-                                            Programming Tutor @ <span className='text-cyan-400 font-bold'>Code Ninjas</span>
-                                        </Timeline.Title>
-                                        <Timeline.Body>
-                                            <ul className='px-5 text-gray-800 dark:text-gray-400 leading-7' style={{ listStyleType: 'circle' }}>
-                                                <li>Designed and delivered engaging computer science lessons to students of varying ages, introducing them to the fundamentals of coding through languages such as JavaScript, Python, <span className='text-teal-500 font-bold'>Unity</span>, Minecraft modding, and Scratch.</li>
-                                                <li>Developed age-appropriate curriculum and instructional materials to facilitate hands-on learning experiences, ensuring students grasped coding concepts effectively while fostering creativity and problem-solving skills.</li>
-                                                <li>Implemented innovative teaching methodologies, including project-based learning and interactive coding exercises, to make complex programming concepts accessible and engaging for students.</li>
-                                            </ul>
-                                        </Timeline.Body>
-                                    </Timeline.Content>
-                                </Timeline.Item>
-                            </Timeline>
+                        <div className='max-w-sm md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto '>
+                            <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200 max-w-sm md:max-w-5xl mx-auto'>professional experience</h3>
+                            <div className='shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>
+                                <Timeline className='max-w-sm md:max-w-5xl mx-auto '>
+                                    <Timeline.Item>
+                                        <Timeline.Point />
+                                        <Timeline.Content>
+                                            <Timeline.Time>
+                                                June 2023 - Present
+                                            </Timeline.Time>
+                                            <Timeline.Title>
+                                                Software Engineering Intern @ <span className='text-cyan-400 font-bold'>Medley Networks Inc.</span>
+                                            </Timeline.Title>
+                                            <Timeline.Body>
+                                                <ul className='px-5 text-md text-gray-800 dark:text-gray-400 leading-7 ' style={{ listStyleType: 'circle' }}>
+                                                    <li>Designed and developed an <span className='text-teal-500 font-bold'>Android application</span> that streamlined the process of capturing and labeling pictures for employees, improving efficiency and accuracy in data management.</li>
+                                                    <li>Integrated Dropbox API into the Android app, automating the upload process and enabling seamless synchronization of labeled pictures to a shared Dropbox folder for convenient access and collaboration.</li>
+                                                    <li>Created <span className='text-teal-500 font-bold'>Python scripts</span> leveraging the Pandas and Excel libraries to automate various manual tasks for employees, significantly reducing the time and effort required for data processing and analysis by <span className='text-teal-500 font-bold'>95%</span>.</li>
+                                                </ul>
+                                            </Timeline.Body>
+                                        </Timeline.Content>
+                                    </Timeline.Item>
+                                    <Timeline.Item>
+                                        <Timeline.Point />
+                                        <Timeline.Content>
+                                            <Timeline.Time>
+                                                September 2020 - August 2021
+                                            </Timeline.Time>
+                                            <Timeline.Title>
+                                                Software Engineering Intern @ <span className='text-cyan-400 font-bold'>Prudential Financial</span>
+                                            </Timeline.Title>
+                                            <Timeline.Body>
+                                                <ul className='px-5 text-gray-800 dark:text-gray-400 leading-7' style={{ listStyleType: 'circle' }}>
+                                                    <li>Developed automated test scripts using <span className='text-teal-500 font-bold'>Java and Selenium WebDriver</span>, enhancing the efficiency and accuracy of software testing processes.</li>
+                                                    <li>Collaborated with the development team to design and implement custom applications using <span className='text-teal-500 font-bold'>SerivceNow and JavaScript</span>, resulting in streamlined workflows and improved user experience.</li>
+                                                    <li>Maintained and expanded a comprehensive testing framework for web applications, ensuring high-quality software releases and reducing manual testing efforts by <span className='text-teal-500 font-bold'>90%</span>.</li>
+                                                    <li>Utilized <span className='text-teal-500 font-bold'>Tableau</span> to analyze and visualize data related to service requests, enabling stakeholders to make data-driven decisions and identify areas for process optimization.</li>
+                                                </ul>
+                                            </Timeline.Body>
+                                        </Timeline.Content>
+                                    </Timeline.Item>
+                                    <Timeline.Item>
+                                        <Timeline.Point />
+                                        <Timeline.Content>
+                                            <Timeline.Time>
+                                                July 2020 - August 2021
+                                            </Timeline.Time>
+                                            <Timeline.Title>
+                                                Programming Tutor @ <span className='text-cyan-400 font-bold'>Code Ninjas</span>
+                                            </Timeline.Title>
+                                            <Timeline.Body>
+                                                <ul className='px-5 text-gray-800 dark:text-gray-400 leading-7' style={{ listStyleType: 'circle' }}>
+                                                    <li>Designed and delivered engaging computer science lessons to students of varying ages, introducing them to the fundamentals of coding through languages such as JavaScript, Python, <span className='text-teal-500 font-bold'>Unity</span>, Minecraft modding, and Scratch.</li>
+                                                    <li>Developed age-appropriate curriculum and instructional materials to facilitate hands-on learning experiences, ensuring students grasped coding concepts effectively while fostering creativity and problem-solving skills.</li>
+                                                    <li>Implemented innovative teaching methodologies, including project-based learning and interactive coding exercises, to make complex programming concepts accessible and engaging for students.</li>
+                                                </ul>
+                                            </Timeline.Body>
+                                        </Timeline.Content>
+                                    </Timeline.Item>
+                                </Timeline>
+                            </div>
                         </div>
                     </motion.div>
 
                     <div className='py-10'></div>
 
-                    <motion.div className='max-w-4xl mx-auto' animate={inView1 ? "visible" : "hidden"}
+                    <motion.div className='max-w-sm md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto' animate={inView1 ? "visible" : "hidden"}
                         variants={variants}
                         exit="hidden"
                         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -190,7 +191,7 @@ export default function Resume() {
                         <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>education</h3>
                         <div className='flex items-center gap-5 py-5'>
                             <Image src={umdLogo} width={100} height={100}></Image>
-                            <div className='text-gray-800 dark:text-gray-400'>
+                            <div className='text-gray-800 dark:text-gray-400 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 flex-1'>
                                 <p className='font-bold'>Bachelor of Computer Science</p>
                                 <p>2021-2025</p>
                                 <p>University of Maryland, College Park, Maryland</p>
@@ -198,7 +199,7 @@ export default function Resume() {
                         </div>
                         <div className='flex items-center gap-5 py-5'>
                             <Image src={mcstLogo} width={100} height={100}></Image>
-                            <div className='text-gray-800 dark:text-gray-400'>
+                            <div className='text-gray-800 dark:text-gray-400 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 flex-1'>
                                 <p className='font-bold'>Academy of Computer & Information Sciences</p>
                                 <p>2017-2021</p>
                                 <p>Morris County School of Technology, Denville, New Jersey</p>
@@ -208,37 +209,42 @@ export default function Resume() {
 
                     <div className='py-10'></div>
 
-                    <motion.div className='max-w-4xl mx-auto' animate={inView2 ? "visible" : "hidden"}
+                    <motion.div className='max-w-sm md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto' animate={inView2 ? "visible" : "hidden"}
                         variants={variants}
                         exit="hidden"
                         transition={{ duration: 0.5, ease: "easeOut" }}
                         ref={ref2}>
                         <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>coursework</h3>
-                        <ul className='text-gray-800 dark:text-gray-400'>
-                            <li className='mb-3'>Object-Oriented Programming I</li>
-                            <li className='mb-3'>Object-Oriented Programming II</li>
-                            <li className='mb-3'>Introduction to Computer Systems</li>
-                            <li className='mb-3'>Discrete Structures</li>
-                            <li className='mb-3'>Organization of Programming Languages</li>
-                            <li className='mb-3'>Algorithms</li>
-                            <li className='mb-3'>Introduction to Compilers</li>
-                            <li className='mb-3'>Introduction to Data Science</li>
+                        <ul className='text-gray-800 dark:text-gray-400 font-bold'>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Object-Oriented Programming I<p className='font-normal'>CMSC131 - UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Object-Oriented Programming II<p className='font-normal'>CMSC132 - UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Introduction to Computer Systems<p className='font-normal'>CMSC216 - UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Discrete Structures<p className='font-normal'>CMSC250 - UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Organization of Programming Languages<p className='font-normal'>CMSC330 - UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Algorithms<p className='font-normal'>CMSC351 - UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Introduction to Compilers<p className='font-normal'>CMSC430 - UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Introduction to Data Science<p className='font-normal'>CMSC320 - UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>AP Computer Science Principles<p className='font-normal'>MCST</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>AP Computer Science A<p className='font-normal'>MCST</p></li>
                         </ul>
                     </motion.div>
 
                     <div className='py-10'></div>
 
-                    <motion.div className='max-w-4xl mx-auto' animate={inView3 ? "visible" : "hidden"}
+                    <motion.div className='max-w-sm md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto' animate={inView3 ? "visible" : "hidden"}
                         variants={variants}
                         exit="hidden"
                         transition={{ duration: 0.5, ease: "easeOut" }}
                         ref={ref3}>
                         <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>other</h3>
-                        <ul className='text-gray-800 dark:text-gray-400'>
-                            <li className='mb-3'>Member of the Students for the Exploration and Development of Space @ UMD</li>
-                            <li className='pb-96'>Member of the South Asian Student Association</li>
+                        <ul className='text-gray-800 dark:text-gray-400 font-bold'>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Member of the Students for the Exploration and Development of Space<p className='font-normal'>SEDS @ UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Member of the South Asian Student Association<p className='font-normal'>SASA @ UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Head of Logistics of HackMCST<p className='font-normal'>Hackathon @ MCST</p></li>
                         </ul>
                     </motion.div>
+                    <div className='py-10'></div>
+
                 </section>
             </main>
         </div>
