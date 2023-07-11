@@ -89,13 +89,13 @@ export default function Home() {
                         </ul>
                     </nav>
 
-                    <motion.div className='max-w-sm md:max-w-5xl mx-auto' animate={inView0 ? "visible" : "hidden"}
+                    <motion.div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto' animate={inView0 ? "visible" : "hidden"}
                         variants={variants}
                         exit="hidden"
                         transition={{ duration: 0.5, ease: "easeOut" }}
                         ref={ref0}>
                         <div className='text-center py-10 '>
-                            <div className='text-5xl pb-4 text-teal-500 font-bold md:text-6xl tracking-tight'>
+                            <div className='text-5xl  text-teal-500 font-bold md:text-6xl tracking-tight'>
                                 <Typewriter
                                     onInit={(typewriter) => {
                                         typewriter.typeString('Contact').start()

@@ -56,22 +56,22 @@ export default function Resume() {
     });
 
     const [ref0, inView0] = useInView({
-        threshold: 0.2,
+        threshold: 0.1,
         triggerOnce: false
     });
 
     const [ref1, inView1] = useInView({
-        threshold: 0.2,
+        threshold: 0.1,
         triggerOnce: false
     });
 
     const [ref2, inView2] = useInView({
-        threshold: 0.2,
+        threshold: 0.1,
         triggerOnce: false
     });
 
     const [ref3, inView3] = useInView({
-        threshold: 0.2,
+        threshold: 0.1,
         triggerOnce: false
     });
 
@@ -120,7 +120,7 @@ export default function Resume() {
                             </div>
                         </div>
 
-                        <div className='max-w-sm md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto '>
+                        <div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto'>
                             <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200 max-w-sm md:max-w-5xl mx-auto'>professional experience</h3>
                             <div className='shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>
                                 <Timeline className='max-w-sm md:max-w-5xl mx-auto '>
@@ -186,14 +186,14 @@ export default function Resume() {
 
                     <div className='py-10'></div>
 
-                    <motion.div className='max-w-sm md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto' animate={inView1 ? "visible" : "hidden"}
+                    <motion.div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto' animate={inView1 ? "visible" : "hidden"}
                         variants={variants}
                         exit="hidden"
                         transition={{ duration: 0.5, ease: "easeOut" }}
                         ref={ref1}>
                         <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>education</h3>
                         <div className='flex items-center gap-5 py-5'>
-                            <Image src={umdLogo} width={100} height={100}></Image>
+                            <Image src={umdLogo} width={100} height={100} alt='umdlogo'></Image>
                             <div className='text-gray-800 dark:text-gray-400 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 flex-1'>
                                 <p className='font-bold'>Bachelor of Computer Science</p>
                                 <p>2021-2025</p>
@@ -201,7 +201,7 @@ export default function Resume() {
                             </div>
                         </div>
                         <div className='flex items-center gap-5 py-5'>
-                            <Image src={mcstLogo} width={100} height={100}></Image>
+                            <Image src={mcstLogo} width={100} height={100} alt='msctlogo'></Image>
                             <div className='text-gray-800 dark:text-gray-400 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 flex-1'>
                                 <p className='font-bold'>Academy of Computer & Information Sciences</p>
                                 <p>2017-2021</p>
@@ -212,7 +212,7 @@ export default function Resume() {
 
                     <div className='py-10'></div>
 
-                    <motion.div className='max-w-sm md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto' animate={inView2 ? "visible" : "hidden"}
+                    <motion.div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto' animate={inView2 ? "visible" : "hidden"}
                         variants={variants}
                         exit="hidden"
                         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -234,7 +234,7 @@ export default function Resume() {
 
                     <div className='py-10'></div>
 
-                    <motion.div className='max-w-sm md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto' animate={inView3 ? "visible" : "hidden"}
+                    <motion.div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto' animate={inView3 ? "visible" : "hidden"}
                         variants={variants}
                         exit="hidden"
                         transition={{ duration: 0.5, ease: "easeOut" }}
