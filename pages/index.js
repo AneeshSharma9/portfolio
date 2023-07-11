@@ -97,7 +97,7 @@ export default function Home() {
         <title>Aneesh Sharma Portfolio</title>
       </Head>
 
-      <main className='bg-white px-10 md:px-20 lg:px-35 dark:bg-gray-900'>
+      <main className='bg-white sm:px-5 md:px-20 lg:px-35 dark:bg-gray-900'>
         <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
         <section className='min-h-screen'>
           <nav className='py-10 mb-12 flex justify-between sticky top-0 z-20'>
@@ -115,16 +115,16 @@ export default function Home() {
             exit="hidden"
             transition={{ duration: 0.5, ease: "easeOut" }}
             ref={ref0}>
-            <div className='text-center p-10 '>
-              <div className='text-5xl py-2 text-teal-500 font-bold md:text-6xl'>
+            <div className='text-center py-10 '>
+              <div className='text-5xl pb-4 text-teal-500 font-bold md:text-6xl tracking-tight'>
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter.typeString('aneesh sharma').start()
                   }}
                 />
               </div>
-              <h3 className='text-2xl py-2 md:text-3xl font-medium dark:text-gray-200'>computer science student</h3>
-              <p className='text-md font-medium py-5 leading-8 text-gray-800 md:text-xl max-w-3xl mx-auto dark:text-gray-400'>I'm a <span className='text-teal-500'>junior</span> computer science student at the University of Maryland. With a solid foundation in programming languages like Java, Python, and C, I've honed my problem-solving skills through various personal coding projects and coursework. I'm passionate about tackling real-world challenges using innovative technology. From developing web and mobile applications to exploring artificial intelligence and data analysis, I'm eager to apply my knowledge and skills to make a meaningful impact.</p>
+              <h3 className='text-2xl md:text-3xl py-2 tracking-tight font-medium dark:text-gray-200'>computer science student</h3>
+              <p className='text-md md:text-xl leading-8 font-medium py-5  text-gray-800 max-w-sm md:max-w-3xl mx-auto dark:text-gray-400 '>I'm a <span className='text-teal-500'>junior</span> computer science student at the University of Maryland, seeking internships to gain more knowledge. As an aspiring <span className='text-teal-500'>full stack developer</span> I have honed my expertise in a diverse range of programming languages, including Java, Python, JavaScript, and more.</p>
             </div>
 
             <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400'>
@@ -138,6 +138,8 @@ export default function Home() {
           </motion.div>
         </section>
 
+        <div className='py-10'></div>
+
         {/* Second Page */}
         <section className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
           <motion.div animate={inView ? "visible" : "hidden"}
@@ -146,10 +148,11 @@ export default function Home() {
             transition={{ duration: 0.5, ease: "easeOut" }}
             ref={ref}>
             <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>skills</h3>
-            <p className='text-md py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>
-              some of my most <span className='text-teal-500'>prominent</span> skills and technologies
+            <p className='text-md md:text-xl py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>
+              some of my most <span className='text-teal-500'>significant</span> skills and technologies
             </p>
           </motion.div>
+          
 
           <motion.div className='lg:flex gap-10 justify-center' animate={inView ? "visible" : "hidden"}
             variants={variants}
@@ -202,7 +205,7 @@ export default function Home() {
               <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
                 <div className=''>
                   <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>projects</h3>
-                  <p className='text-md py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>check out some of my recent <span className='text-teal-500'>personal projects</span></p>
+                  <p className='text-md md:text-xl py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>check out some of my recent <span className='text-teal-500'>personal projects</span></p>
                 </div>
 
                 <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 py-5">
