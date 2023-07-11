@@ -89,9 +89,9 @@ export default function Home() {
         <title>Aneesh Sharma Portfolio</title>
       </Head>
 
-      <main className='bg-white lg:px-35 dark:bg-gray-900 '>
+      <main className='w-full bg-white lg:px-35 dark:bg-gray-900 '>
         <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
-        <nav className='py-2 2xl:py-7 mb-12 2xl:px-10 flex justify-between sticky top-0 z-20 w-full mx-auto bg-gray-100 dark:bg-gray-800 2xl:bg-transparent 2xl:dark:bg-transparent shadow-lg 2xl:shadow-none'>
+        <nav className='py-2 2xl:py-7 mb-12 2xl:px-10 flex justify-between sticky top-0 z-20 mx-auto bg-gray-100 dark:bg-gray-800 2xl:bg-transparent 2xl:dark:bg-transparent shadow-lg 2xl:shadow-none'>
           <Image className="scale-50 fill-white md:scale-75" src={signatureSrc}></Image>
           <ul className='flex items-center gap-7'>
             <li><h2 onClick={toggleDarkMode} className='cursor-pointer text-2xl'>{symbol}</h2></li>
@@ -117,7 +117,7 @@ export default function Home() {
                 />
               </div>
               <h3 className='text-2xl md:text-3xl py-2 tracking-tight font-medium dark:text-gray-200'>computer science student</h3>
-              <p className='text-md md:text-xl leading-8 font-medium py-5  text-gray-800 max-w-sm md:max-w-3xl mx-auto dark:text-gray-400 '>I&apos;m a <span className='text-teal-500'>junior</span> computer science student at the University of Maryland, seeking internships to gain more knowledge. As an aspiring <span className='text-teal-500'>full stack developer</span> I have honed my expertise in a diverse range of programming languages, including Java, Python, JavaScript, and more.</p>
+              <p className='text-md md:text-xl leading-8 font-medium py-5 w-full text-gray-800 max-w-xs sm:max-w-sm md:max-w-3xl mx-auto dark:text-gray-400 '>I&apos;m a <span className='text-teal-500'>junior</span> computer science student at the University of Maryland, seeking internships to gain more knowledge. As an aspiring <span className='text-teal-500'>full stack developer</span> I have honed my expertise in a diverse range of programming languages, including Java, Python, JavaScript, and more.</p>
             </div>
 
             <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400'>
@@ -135,7 +135,7 @@ export default function Home() {
         <div className='py-10'></div>
 
         {/* Second Page */}
-        <section className='max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto p-4 flex flex-col justify-center w-full h-full'>
+        <section className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto p-4 flex flex-col justify-center w-full h-full'>
           <motion.div animate={inView ? "visible" : "hidden"}
             variants={variants}
             exit="hidden"
@@ -196,7 +196,7 @@ export default function Home() {
             transition={{ duration: 1, ease: "easeOut" }}
             ref={ref2}>
             <div name='work' className='w-full md:h-screen text-gray-300'>
-              <div className='max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto p-4 flex flex-col justify-center w-full h-full'>
+              <div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto p-4 flex flex-col justify-center w-full h-full'>
                 <div className=''>
                   <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>projects</h3>
                   <p className='text-md md:text-xl py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>check out some of my recent <span className='text-teal-500'>personal projects</span></p>
