@@ -120,7 +120,7 @@ export default function Home() {
                                 <input className='my-4 p-2 border-gray-500 dark:bg-gray-300 rounded-md' type="email" placeholder='Email' name='email' />
                                 <textarea className='border-gray-500 dark:bg-gray-300 p-2 rounded-md' name="message" rows="5" placeholder='Message'></textarea>
                                 <input type="hidden" name="redirect" value="https://web3forms.com/success"></input>
-                                <button className='dark:text-gray-300 border-gray-500 border-2 hover:bg-teal-500 hover:border-teal-500 px-4 py-3 my-8 mx-auto flex items-center rounded-md'>Let&apos;s Collaborate</button>
+                                <button className='dark:text-gray-300 border-gray-500 border-2 hover:bg-teal-500 hover:border-teal-500 px-8 py-3 my-8 mx-auto flex items-center rounded-md'>Send</button>
                             </form>
                         </div>
                     </motion.div>
