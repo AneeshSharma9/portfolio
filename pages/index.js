@@ -91,8 +91,8 @@ export default function Home() {
 
       <main className='w-full min-w-full mx-auto bg-white lg:px-35 dark:bg-gray-900 '>
         <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
-        <nav className='py-2 2xl:py-7 mb-12 2xl:px-10 flex justify-between sticky top-0 z-20 mx-auto bg-gray-100 dark:bg-gray-800 2xl:bg-transparent 2xl:dark:bg-transparent shadow-lg 2xl:shadow-none'>
-          <Image className="scale-50 fill-white md:scale-75" src={signatureSrc}></Image>
+        <nav className='py-2 2xl:py-7 mb-12 2xl:px-10 flex justify-between sticky top-0 z-20 mx-auto bg-gray-100 dark:bg-gray-800 shadow-lg 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-none'>
+          <Image className="scale-50 fill-white md:scale-75" src={signatureSrc} alt="signatureLogo"></Image>
           <ul className='flex items-center gap-7'>
             <li><h2 onClick={toggleDarkMode} className='cursor-pointer text-2xl'>{symbol}</h2></li>
             <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/">Home</Link></li>
@@ -127,7 +127,7 @@ export default function Home() {
             </div>
 
             <div className="relative mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 mt-20 overflow-hidden md:h-96 md:w-96 z-10">
-              <Image src={aneesh} layout="fill" objectFit="cover" />
+              <Image src={aneesh} objectFit="cover" alt="pfp"/>
             </div>
           </motion.div>
         </section>
@@ -155,7 +155,7 @@ export default function Home() {
             ref={ref}>
             <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
-                <Image src={programming} width={100} height={100}></Image>
+                <Image src={programming} width={100} height={100} alt="image"></Image>
               </div>
               <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Programming Languages</h3>
 
@@ -167,7 +167,7 @@ export default function Home() {
 
             <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
-                <Image src={technologies} width={100} height={100}></Image>
+                <Image src={technologies} width={100} height={100} alt="image"></Image>
               </div>
               <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Technologies</h3>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Pandas</p>
@@ -178,7 +178,7 @@ export default function Home() {
 
             <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
               <div className='flex justify-center '>
-                <Image src={tools} width={100} height={100}></Image>
+                <Image src={tools} width={100} height={100} alt="image"></Image>
               </div>
               <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Tools</h3>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Visual Studio Code</p>
@@ -212,7 +212,7 @@ export default function Home() {
                         <span className="text-2xl font-bold dark:text-gray-300 tracking-wider text-gray-800 py-1 px-1" >
                           {item.name}
                         </span>
-                        <Image src={item.image}></Image>
+                        <Image src={item.image} alt="gitImage"></Image>
                         <div className=" text-center ">
                           <a href={item.github} target="_blank">
                             <button className="hover:bg-gray-200 dark:hover:bg-gray-600 shadow-lg text-center rounded-lg px-4 py-3 m-2 bg-gray-100 dark:bg-gray-700 text-gray-600  dark:text-gray-400 font-bold text-lg">
