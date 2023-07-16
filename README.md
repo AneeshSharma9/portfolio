@@ -1,4 +1,4 @@
-# **Portfolio**
+# **Web Portfolio**
 
 ## 🔗 Links
 Access portfolio: https://aneeshsharma9.github.io/portfolio/
