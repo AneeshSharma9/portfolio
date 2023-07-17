@@ -131,7 +131,7 @@ export default function Resume() {
                                                 June 2023 - Present
                                             </Timeline.Time>
                                             <Timeline.Title>
-                                                Software Engineering Intern @ <span className='text-cyan-400 font-bold'>Medley Networks Inc.</span>
+                                                Software Engineer Intern @ <span className='text-cyan-400 font-bold'>Medley Networks Inc.</span>
                                             </Timeline.Title>
                                             <Timeline.Body>
                                                 <ul className='px-5 text-md text-gray-800 dark:text-gray-400 leading-7 ' style={{ listStyleType: 'circle' }}>
@@ -149,7 +149,7 @@ export default function Resume() {
                                                 September 2020 - August 2021
                                             </Timeline.Time>
                                             <Timeline.Title>
-                                                Software Engineering Intern @ <span className='text-cyan-400 font-bold'>Prudential Financial</span>
+                                                Software Engineer Intern @ <span className='text-cyan-400 font-bold'>Prudential Financial</span>
                                             </Timeline.Title>
                                             <Timeline.Body>
                                                 <ul className='px-5 text-gray-800 dark:text-gray-400 leading-7' style={{ listStyleType: 'circle' }}>
