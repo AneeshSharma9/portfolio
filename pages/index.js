@@ -215,7 +215,7 @@ export default function Home() {
                         <span className="text-2xl font-bold dark:text-gray-300 tracking-wider text-gray-800 py-1 px-1" >
                           {item.name}
                         </span>
-                        <Image src={item.image} alt="gitImage"></Image>
+                        <Image src={item.image} alt="gitImage" ></Image>
                         <div className=" text-center ">
                           <a href={item.github} target="_blank">
                             <button className="hover:bg-gray-200 dark:hover:bg-gray-600 shadow-lg text-center rounded-lg px-4 py-3 m-2 bg-gray-100 dark:bg-gray-700 text-gray-600  dark:text-gray-400 font-bold text-lg">
