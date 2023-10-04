@@ -172,7 +172,7 @@ export default function Resume() {
                                             </Timeline.Title>
                                             <Timeline.Body>
                                                 <ul className='px-5 text-gray-800 dark:text-gray-400 leading-7' style={{ listStyleType: 'circle' }}>
-                                                    <li>Designed and delivered engaging computer science lessons to students of varying ages, introducing them to the fundamentals of coding through languages such as JavaScript, Python, <span className='text-teal-500 font-bold'>Unity</span>, Minecraft modding, and Scratch.</li>
+                                                    <li>Designed and delivered engaging computer science lessons to students of varying ages, introducing them to the fundamentals of coding through languages such as <span className='text-teal-500 font-bold'>JavaScript</span>, <span className='text-teal-500 font-bold'>Python</span>, <span className='text-teal-500 font-bold'>Unity</span>, Minecraft modding, and Scratch.</li>
                                                     <li>Developed age-appropriate curriculum and instructional materials to facilitate hands-on learning experiences, ensuring students grasped coding concepts effectively while fostering creativity and problem-solving skills.</li>
                                                     <li>Implemented innovative teaching methodologies, including project-based learning and interactive coding exercises, to make complex programming concepts accessible and engaging for students.</li>
                                                 </ul>
@@ -241,9 +241,9 @@ export default function Resume() {
                         ref={ref3}>
                         <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>other</h3>
                         <ul className='text-gray-800 dark:text-gray-400 font-bold'>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Member of the Students for the Exploration and Development of Space<p className='font-normal'>SEDS @ UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Member of the South Asian Student Association<p className='font-normal'>SASA @ UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Head of Logistics of HackMCST<p className='font-normal'>Hackathon @ MCST</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Avionics Engineer | CubeSat Team<p className='font-normal'>Students for the Exploration and Development of Space @ UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Member | South Asian Student Association<p className='font-normal'>SASA @ UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Head of Logistics | HackMCST<p className='font-normal'>Hackathon @ MCST</p></li>
                         </ul>
                     </motion.div>
                     <div className='py-10'></div>
