@@ -120,7 +120,7 @@ export default function Home() {
                 />
               </div>
               <h3 className='text-2xl md:text-3xl py-2 tracking-tight font-medium dark:text-gray-200'>computer science student</h3>
-              <p className='text-md md:text-xl leading-8 font-medium py-5 w-full text-gray-800 max-w-xs sm:max-w-sm md:max-w-3xl mx-auto dark:text-gray-400 '>I&apos;m a <span className='text-teal-500'>junior</span> computer science student at the University of Maryland, seeking internships to gain more knowledge. As an aspiring <span className='text-teal-500'>software engineer</span> I have honed my expertise in a diverse range of programming languages, including Java, Python, JavaScript, and more.</p>
+              <p className='text-md md:text-xl leading-8 font-medium py-5 w-full text-gray-800 max-w-xs sm:max-w-sm md:max-w-3xl mx-auto dark:text-gray-400 '>I&apos;m a <span className='text-teal-500'>junior</span> computer science student at the University of Maryland, seeking internships to gain experience! As an aspiring <span className='text-teal-500'>software engineer</span> I have honed my expertise in a diverse range of programming languages, including Java, Python, JavaScript, and more.</p>
             </div>
 
             <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400'>
