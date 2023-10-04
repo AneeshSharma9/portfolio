@@ -163,9 +163,11 @@ export default function Home() {
               <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Programming Languages</h3>
 
               <p className='text-gray-800 py-1 dark:text-gray-400'>Java / Kotlin</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>C</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Python</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>C / C++</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>JavaScript</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>SQL</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>OCaml</p>
             </div>
 
             <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
@@ -175,8 +177,10 @@ export default function Home() {
               <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Technologies</h3>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Pandas</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>React</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>HTML / CSS</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Flask</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Node</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>Node.js</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>Dash</p>
             </div>
 
             <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
@@ -188,6 +192,8 @@ export default function Home() {
               <p className='text-gray-800 py-1 dark:text-gray-400'>GitHub</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Amazon Web Services</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Android Studio</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>Unity</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>MySQL</p>
             </div>
           </motion.div>
         </section>
