@@ -9,17 +9,17 @@ import tracklifyImage from '../public/tracklify_logo.png'
 export const data = [
     {
         id: 1,
-        name: "Propello",
-        image: propelloImage,
-        github: "https://github.com/AneeshSharma9/propello",
-        live: "",
+        name: "ViewVault",
+        image: tracklifyImage,
+        github: "https://github.com/AneeshSharma9/ViewVault",
+        live: "https://viewvault.netlify.app/",
     },
     {
         id: 2,
-        name: "Tracklify",
-        image: tracklifyImage,
-        github: "https://github.com/AneeshSharma9/tracklify",
-        live: "",
+        name: "Propello",
+        image: propelloImage,
+        github: "https://github.com/AneeshSharma9/propello",
+        live: "https://propello.netlify.app/",
     },
     {
         id: 3,
@@ -40,7 +40,7 @@ export const data = [
         name: "Web Excel",
         image: excelImage,
         github: "https://github.com/AneeshSharma9/WebExcel",
-        live: "",
+        live: "https://webexcel.netlify.app/",
     },
     {
         id: 6,

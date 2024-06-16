@@ -120,7 +120,7 @@ export default function Home() {
                 />
               </div>
               <h3 className='text-2xl md:text-3xl py-2 tracking-tight font-medium dark:text-gray-200'>computer science student</h3>
-              <p className='text-md md:text-xl leading-8 font-medium py-5 w-full text-gray-800 max-w-xs sm:max-w-sm md:max-w-3xl mx-auto dark:text-gray-400 '>I&apos;m a <span className='text-teal-500'>junior</span> computer science student at the University of Maryland, seeking internships to gain experience! As an aspiring <span className='text-teal-500'>software engineer</span> I have honed my expertise in a diverse range of programming languages, including Java, Python, JavaScript, and more.</p>
+              <p className='text-md md:text-xl leading-8 font-medium py-5 w-full text-gray-800 max-w-xs sm:max-w-sm md:max-w-3xl mx-auto dark:text-gray-400 '>I&apos;m a <span className='text-teal-500'>senior</span> computer science student at the University of Maryland, seeking new grad positions where I can contribute to impactful projects and grow as a <span className='text-teal-500'>software engineer</span>! I am passionate about developing innovative software solutions and eager to leverage my skills in a dynamic, forward-thinking environment.</p>
             </div>
 
             <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400'>
@@ -167,6 +167,10 @@ export default function Home() {
               <p className='text-gray-800 py-1 dark:text-gray-400'>C / C++</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>JavaScript</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>SQL</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>Rust</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>Ruby</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>R</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>C#</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>OCaml</p>
             </div>
 
@@ -175,11 +179,15 @@ export default function Home() {
                 <Image src={technologies} width={100} height={100} alt="image"></Image>
               </div>
               <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Technologies</h3>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Pandas</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>React</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>HTML / CSS</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Flask</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>Pandas</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>SciPy</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>React.js</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Node.js</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>Flask</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>PyTorch</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>Next.js</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>JUnit</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Dash</p>
             </div>
 
@@ -194,6 +202,7 @@ export default function Home() {
               <p className='text-gray-800 py-1 dark:text-gray-400'>Android Studio</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>Unity</p>
               <p className='text-gray-800 py-1 dark:text-gray-400'>MySQL</p>
+              <p className='text-gray-800 py-1 dark:text-gray-400'>Eclipse</p>
             </div>
           </motion.div>
         </section>
@@ -223,6 +232,13 @@ export default function Home() {
                         </span>
                         <Image src={item.image} alt="gitImage" ></Image>
                         <div className=" text-center ">
+                          {item.live && (
+                            <a href={item.live} target="_blank" rel="noopener noreferrer">
+                              <button className="hover:bg-gray-200 dark:hover:bg-gray-600 shadow-lg text-center rounded-lg px-4 py-3 m-2 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 font-bold text-lg">
+                                Live
+                              </button>
+                            </a>
+                          )}
                           <a href={item.github} target="_blank">
                             <button className="hover:bg-gray-200 dark:hover:bg-gray-600 shadow-lg text-center rounded-lg px-4 py-3 m-2 bg-gray-100 dark:bg-gray-700 text-gray-600  dark:text-gray-400 font-bold text-lg">
                               Code

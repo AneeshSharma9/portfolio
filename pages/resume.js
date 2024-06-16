@@ -9,6 +9,9 @@ import signature from "../public/signature.png"
 import signatureDark from "../public/signature-dark.png"
 import umdLogo from "../public/university-of-maryland-logo-vector-1.png"
 import mcstLogo from "../public/mcst.logo.png"
+import medleyLogo from "../public/medley.png"
+import prudentialLogo from "../public/prudential.png"
+import goreLogo from "../public/gore.png"
 import Typewriter from 'typewriter-effect';
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -128,10 +131,28 @@ export default function Resume() {
                                         <Timeline.Point />
                                         <Timeline.Content>
                                             <Timeline.Time>
-                                                June 2023 - Present
+                                                June 2024 - Present
                                             </Timeline.Time>
                                             <Timeline.Title>
-                                                Software Engineer Intern @ <span className='text-cyan-400 font-bold'>Medley Networks Inc.</span>
+                                                IT Application Development Intern @ <a href="https://www.gore.com" target="_blank" className='text-cyan-400 font-bold'>W.L. Gore & Associates</a>
+                                            </Timeline.Title>
+                                            <Timeline.Body>
+                                                <ul className='px-5 text-md text-gray-800 dark:text-gray-400 leading-7 ' style={{ listStyleType: 'circle' }}>
+                                                    <li>Developed <span className='text-teal-500 font-bold'>Python</span>-based IT applications for the Fuel Cell Team, automating data integration and analysis processes for Gore Clean Energy initiatives.</li>
+                                                    <li>Streamlined the data processing workflow by transforming raw CSV data into actionable insights, significantly reducing manual effort and processing time by <span className='text-teal-500 font-bold'>95%</span>.</li>
+                                                    <li>Created a <span className='text-teal-500 font-bold'>database</span> system to store and compare previously analyzed results with newer data, facilitating identification of significant changes and trends over time.</li>
+                                                </ul>
+                                            </Timeline.Body>
+                                        </Timeline.Content>
+                                    </Timeline.Item>
+                                    <Timeline.Item>
+                                        <Timeline.Point />
+                                        <Timeline.Content>
+                                            <Timeline.Time>
+                                                June 2023 - May 2024
+                                            </Timeline.Time>
+                                            <Timeline.Title>
+                                                Software Engineer Intern @ <a href="https://www.medleynetworks.com" target="_blank" className='text-cyan-400 font-bold'>Medley Networks Inc.</a>
                                             </Timeline.Title>
                                             <Timeline.Body>
                                                 <ul className='px-5 text-md text-gray-800 dark:text-gray-400 leading-7 ' style={{ listStyleType: 'circle' }}>
@@ -149,7 +170,7 @@ export default function Resume() {
                                                 September 2020 - August 2021
                                             </Timeline.Time>
                                             <Timeline.Title>
-                                                Software Engineer Intern @ <span className='text-cyan-400 font-bold'>Prudential Financial</span>
+                                                Software Engineer Intern @ <a href="https://www.prudential.com" target="_blank" className='text-cyan-400 font-bold'>Prudential Financial</a>
                                             </Timeline.Title>
                                             <Timeline.Body>
                                                 <ul className='px-5 text-gray-800 dark:text-gray-400 leading-7' style={{ listStyleType: 'circle' }}>
@@ -168,7 +189,7 @@ export default function Resume() {
                                                 July 2020 - August 2021
                                             </Timeline.Time>
                                             <Timeline.Title>
-                                                Programming Tutor @ <span className='text-cyan-400 font-bold'>Code Ninjas</span>
+                                                Programming Tutor @ <a href="https://www.codeninjas.com" target="_blank" className='text-cyan-400 font-bold'>Code Ninjas</a>
                                             </Timeline.Title>
                                             <Timeline.Body>
                                                 <ul className='px-5 text-gray-800 dark:text-gray-400 leading-7' style={{ listStyleType: 'circle' }}>
@@ -218,18 +239,21 @@ export default function Resume() {
                         transition={{ duration: 0.5, ease: "easeOut" }}
                         ref={ref2}>
                         <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>coursework</h3>
-                        <ul className='text-gray-800 dark:text-gray-400 font-bold'>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Object-Oriented Programming I<p className='font-normal'>CMSC131 - UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Object-Oriented Programming II<p className='font-normal'>CMSC132 - UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Introduction to Computer Systems<p className='font-normal'>CMSC216 - UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Discrete Structures<p className='font-normal'>CMSC250 - UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Organization of Programming Languages<p className='font-normal'>CMSC330 - UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Algorithms<p className='font-normal'>CMSC351 - UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Introduction to Compilers<p className='font-normal'>CMSC430 - UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>Introduction to Data Science<p className='font-normal'>CMSC320 - UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>AP Computer Science Principles<p className='font-normal'>MCST</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 leading-8'>AP Computer Science A<p className='font-normal'>MCST</p></li>
+                        <ul className='text-gray-800 dark:text-gray-400 font-bold grid grid-cols-1 sm:grid-cols-2 gap-4'>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Object-Oriented Programming I<p className='font-normal'>CMSC131 - UMD</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Object-Oriented Programming II<p className='font-normal'>CMSC132 - UMD</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Introduction to Computer Systems<p className='font-normal'>CMSC216 - UMD</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Discrete Structures<p className='font-normal'>CMSC250 - UMD</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Organization of Programming Languages<p className='font-normal'>CMSC330 - UMD</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Algorithms<p className='font-normal'>CMSC351 - UMD</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Introduction to Compilers<p className='font-normal'>CMSC430 - UMD</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Introduction to Data Science<p className='font-normal'>CMSC320 - UMD</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Advanced Data Structures<p className='font-normal'>CMSC420 - UMD</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Computer Vision<p className='font-normal'>CMSC426 - UMD</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>AP Computer Science Principles<p className='font-normal'>MCST</p></li>
+                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>AP Computer Science A<p className='font-normal'>MCST</p></li>
                         </ul>
+
                     </motion.div>
 
                     <div className='py-10'></div>
@@ -241,7 +265,7 @@ export default function Resume() {
                         ref={ref3}>
                         <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>other</h3>
                         <ul className='text-gray-800 dark:text-gray-400 font-bold'>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Avionics Engineer | CubeSat Team<p className='font-normal'>Students for the Exploration and Development of Space @ UMD</p></li>
+                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Hardware Automation Engineer | CubeSat Team<p className='font-normal'>Students for the Exploration and Development of Space @ UMD</p></li>
                             <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Member | South Asian Student Association<p className='font-normal'>SASA @ UMD</p></li>
                             <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Head of Logistics | HackMCST<p className='font-normal'>Hackathon @ MCST</p></li>
                         </ul>
