@@ -1,259 +1,270 @@
-import Head from 'next/head'
-import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from 'react-icons/ai'
-import Image from "next/image"
-import aneesh from "../public/pfp.png"
-import tools from "../public/tools.png"
-import programming from "../public/programming.png"
-import technologies from "../public/technologies.png"
-import signature from "../public/signature.png"
-import signatureDark from "../public/signature-dark.png"
-import { data } from "../data/data.js";
-import { useState, useEffect } from "react"
-import Link from 'next/link'
-import Typewriter from 'typewriter-effect';
-import { motion, useScroll, useSpring } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import Head from "next/head";
+import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from "react-icons/ai";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import aneesh from "../public/pfp.png";
 
+import StatusBar from "../components/StatusBar";
+import SideNav from "../components/SideNav";
+import MobileNav from "../components/MobileNav";
+import TerminalWindow from "../components/TerminalWindow";
+import TerminalPrompt from "../components/TerminalPrompt";
+import PixelLandscape from "../components/PixelLandscape";
+import PixelDecor from "../components/PixelDecor";
+
+const ABOUT = [
+  ["Location", "Newark, DE (USA)"],
+  ["Interests", "Coding · Gaming · Cars · Books · Movies"],
+  ["Education", "B.S. in Computer Science"],
+  ["Currently", "Software Engineer"],
+];
+
+const SKILL_GROUPS = [
+  {
+    title: "Languages",
+    icon: "code",
+    items: ["Python", "Java", "C++", "SQL", "JavaScript", "Rust", "Ruby", "R", "C#", "OCaml", "Kotlin"],
+  },
+  {
+    title: "Frameworks & Tools",
+    icon: "gear",
+    items: ["React", "Next.js", "Node.js", "Express", "Tailwind", "Git", "Docker", "Linux", "Flask", "PyTorch"],
+  },
+  {
+    title: "Other",
+    icon: "layers",
+    items: ["Problem Solving", "System Design", "APIs", "Databases", "Cloud (AWS)", "Android", "Unity"],
+  },
+];
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    themeCheck();
-  }, [darkMode]);
-
-  useEffect(() => {
-    themeCheck();
+    setMounted(true);
   }, []);
 
-  const themeCheck = () => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-      setDarkMode(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-      setDarkMode(false);
-    }
-  }
-
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    localStorage.theme = newMode ? "dark" : "light";
-    setDarkMode(newMode);
-  };
-
-  const symbol = darkMode ? "🌙" : "☀️";
-
-  const signatureSrc = darkMode ? signatureDark : signature;
-
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
-  const [ref0, inView0] = useInView({
-    threshold: 0.1,
-    triggerOnce: false
-  });
-
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: false
-  });
-
-  const [ref2, inView2] = useInView({
-    threshold: 0.1,
-    triggerOnce: false
-  });
-
-  const variants = {
-    visible: { opacity: 1, scale: 1, y: 0 },
-    hidden: {
-      opacity: 0,
-      scale: 0.65,
-      y: 50
-    }
-  };
-
-  const project = data;
-
   return (
-    <div className={darkMode ? "dark" : ""}>
+    <div className="min-h-screen bg-gruv-bg1 noise-bg text-gruv-fg0 font-mono">
       <Head>
-        <title>Aneesh Sharma Portfolio</title>
-      </Head>
+        <title>Aneesh Sharma — Software Engineer</title>
+        <meta
+          name="description"
+          content="Portfolio of Aneesh Sharma, a software engineer specializing in backend and cloud integrations. Explore my projects, experience, and skills."
+        />
+        <meta
+          name="keywords"
+          content="Aneesh Sharma, software engineer, portfolio, backend developer, cloud integrations, full stack"
+        />
+        <meta name="author" content="Aneesh Sharma" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Aneesh Sharma — Software Engineer" />
+        <meta
+          property="og:description"
+          content="Portfolio of Aneesh Sharma, a software engineer specializing in backend and cloud integrations."
+        />
+        <meta property="og:url" content="https://aneeshsharma9.github.io/portfolio/" />
+        <meta property="og:site_name" content="Aneesh Sharma" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Aneesh Sharma — Software Engineer" />
+        <meta
+          name="twitter:description"
+          content="Portfolio of Aneesh Sharma, a software engineer specializing in backend and cloud integrations."
+        />
+        </Head>
 
-      <main className='w-full min-w-full mx-auto bg-white lg:px-35 dark:bg-gray-900 '>
-        <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
-        <nav className='md:flex py-2 2xl:py-7 mb-12 2xl:px-10 md:justify-between sticky top-0 z-20 mx-auto bg-gray-100 dark:bg-gray-800 shadow-lg 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-none'>
-          <div className='flex justify-center md:justify-normal'>
-            <Image className="scale-50 md:scale-75" src={signatureSrc} alt="signatureLogo"></Image>
-          </div>
+      <div className="sticky top-0 z-40">
+        <StatusBar />
+        <MobileNav />
+      </div>
 
-          <ul className='flex items-center gap-7 justify-center px-5'>
-            <li><h2 onClick={toggleDarkMode} className='cursor-pointer text-2xl'>{symbol}</h2></li>
-            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/">Home</Link></li>
-            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/resume">Resume</Link></li>
-            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/contact">Contact</Link></li>
-          </ul>
-        </nav>
-        <section className='min-h-screen w-full mx-auto'>
+      <div className="max-w-[1500px] mx-auto px-4 lg:px-10 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[180px_1fr_260px] gap-5 items-start">
+          {/* Left navigation */}
+          <aside className="hidden lg:block lg:sticky lg:top-20">
+            <SideNav />
+          </aside>
 
+          {/* Center content */}
+          <main className="space-y-6">
+            {/* ---------- /home ---------- */}
+            <section id="home" className="scroll-mt-20">
+              <TerminalWindow title="/home">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <TerminalPrompt text="whoami" />
+                    <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-gruv-yellow mt-4">
+                      Aneesh Sharma
+                    </h1>
+                    <p className="text-gruv-aqua text-xl md:text-2xl mt-2 font-medium">
+                      Software Engineer
+                    </p>
+                    <p className="text-gruv-fg1 mt-6 text-[15px] leading-7">
+                      I build things, solve problems, and enjoy making the
+                      complex feel simple (or at least, functional).
+                    </p>
 
-          <motion.div animate={inView0 ? "visible" : "hidden"}
-            variants={variants}
-            exit="hidden"
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            ref={ref0}>
-            <div className='text-center py-10 '>
-              <div className='text-5xl pb-4 text-teal-500 font-bold md:text-6xl tracking-tight'>
-                <Typewriter
-                  onInit={(typewriter) => {
-                    typewriter.typeString('aneesh sharma').start()
-                  }}
-                />
-              </div>
-              <h3 className='text-2xl md:text-3xl py-2 tracking-tight font-medium dark:text-gray-200'>computer science student</h3>
-              <p className='text-md md:text-xl leading-8 font-medium py-5 w-full text-gray-800 max-w-xs sm:max-w-sm md:max-w-3xl mx-auto dark:text-gray-400 '>I&apos;m a <span className='text-teal-500'>senior</span> computer science student at the University of Maryland, seeking new grad positions where I can contribute to impactful projects and grow as a <span className='text-teal-500'>software engineer</span>! I am passionate about developing innovative software solutions and eager to leverage my skills in a dynamic, forward-thinking environment.</p>
-            </div>
+                    <div className="flex items-center gap-4 mt-7 text-2xl text-gruv-fg1">
+                      <a
+                        href="https://www.linkedin.com/in/aneeshsharma9/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gruv-blue transition-colors"
+                        aria-label="LinkedIn"
+                      >
+                        <AiFillLinkedin />
+                      </a>
+                      <a
+                        href="https://www.instagram.com/aneesh._.sharma/?hl=en"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gruv-purple transition-colors"
+                        aria-label="Instagram"
+                      >
+                        <AiFillInstagram />
+                      </a>
+                      <a
+                        href="https://github.com/AneeshSharma9"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gruv-aqua transition-colors"
+                        aria-label="GitHub"
+                      >
+                        <AiFillGithub />
+                      </a>
+                    </div>
 
-            <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400'>
-              <a href="https://www.linkedin.com/in/aneeshsharma9/" target="_blank"><AiFillLinkedin /></a>
-              <a href="https://www.instagram.com/aneesh._.sharma/?hl=en" target="_blank"><AiFillInstagram /></a>
-              <a href="https://github.com/AneeshSharma9" target="_blank"><AiFillGithub /></a>
-            </div>
+                    <div className="mt-8">
+                      <TerminalPrompt text="~/home" showCursor />
+                    </div>
+                  </div>
 
-            <div className="relative mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 mt-20 overflow-hidden md:h-96 md:w-96 z-10">
-              <Image src={aneesh} alt="pfp" priority={true} />
-            </div>
-          </motion.div>
-        </section>
-
-        <div className='py-10'></div>
-
-        {/* Second Page */}
-        <section className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto p-4 flex flex-col justify-center w-full h-full'>
-          <motion.div animate={inView ? "visible" : "hidden"}
-            variants={variants}
-            exit="hidden"
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            ref={ref}>
-            <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>skills</h3>
-            <p className='text-md md:text-xl py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>
-              some of my most <span className='text-teal-500'>significant</span> skills and technologies
-            </p>
-          </motion.div>
-
-
-          <motion.div className='lg:flex gap-10 justify-center' animate={inView ? "visible" : "hidden"}
-            variants={variants}
-            exit="hidden"
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            ref={ref}>
-            <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
-              <div className='flex justify-center '>
-                <Image src={programming} width={100} height={100} alt="image"></Image>
-              </div>
-              <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Programming Languages</h3>
-
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Java / Kotlin</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Python</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>C / C++</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>JavaScript</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>SQL</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Rust</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Ruby</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>R</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>C#</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>OCaml</p>
-            </div>
-
-            <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
-              <div className='flex justify-center '>
-                <Image src={technologies} width={100} height={100} alt="image"></Image>
-              </div>
-              <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Technologies</h3>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>HTML / CSS</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Pandas</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>SciPy</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>React.js</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Node.js</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Flask</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>PyTorch</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Next.js</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>JUnit</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Dash</p>
-            </div>
-
-            <div className='text-center shadow-lg p-10 rounded-xl my-10 dark:bg-gray-800 flex-1'>
-              <div className='flex justify-center '>
-                <Image src={tools} width={100} height={100} alt="image"></Image>
-              </div>
-              <h3 className='text-lg font-medium pt-8 pb-2 dark:text-gray-200'>Tools</h3>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Visual Studio Code</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>GitHub</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Amazon Web Services</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Android Studio</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Unity</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>MySQL</p>
-              <p className='text-gray-800 py-1 dark:text-gray-400'>Eclipse</p>
-            </div>
-          </motion.div>
-        </section>
-
-        <section>
-          <motion.div animate={inView2 ? "visible" : "hidden"}
-            variants={variants}
-            exit="hidden"
-            transition={{ duration: 1, ease: "easeOut" }}
-            ref={ref2}>
-            <div name='work' className='w-full md:h-screen text-gray-300'>
-              <div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto p-4 flex flex-col justify-center w-full h-full'>
-                <div className=''>
-                  <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>projects</h3>
-                  <p className='text-md md:text-xl py-2 leading-8 text-gray-800 font-medium dark:text-gray-400'>check out some of my recent <span className='text-teal-500'>personal projects</span></p>
+                  <div className="flex justify-center md:justify-end">
+                    <PixelLandscape className="w-full max-w-xs pixel-border rounded-md" />
+                  </div>
                 </div>
+              </TerminalWindow>
+            </section>
 
-                <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 py-5">
-                  {project.map((item, index) => (
-                    <div
-                      key={index}
-                      style={{}}
-                      className="shadow-lg p-10 rounded-xl group container justify-center text-center items-center mx-auto content-div dark:bg-gray-800">
-                      <div className="" >
-                        <span className="text-2xl font-bold dark:text-gray-300 tracking-wider text-gray-800 py-1 px-1" >
-                          {item.name}
-                        </span>
-                        <Image src={item.image} alt="gitImage" ></Image>
-                        <div className=" text-center ">
-                          {item.live && (
-                            <a href={item.live} target="_blank" rel="noopener noreferrer">
-                              <button className="hover:bg-gray-200 dark:hover:bg-gray-600 shadow-lg text-center rounded-lg px-4 py-3 m-2 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 font-bold text-lg">
-                                Live
-                              </button>
-                            </a>
-                          )}
-                          <a href={item.github} target="_blank">
-                            <button className="hover:bg-gray-200 dark:hover:bg-gray-600 shadow-lg text-center rounded-lg px-4 py-3 m-2 bg-gray-100 dark:bg-gray-700 text-gray-600  dark:text-gray-400 font-bold text-lg">
-                              Code
-                            </button>
-                          </a>
-                        </div>
-                      </div>
+            {/* ---------- /about_me ---------- */}
+            <section id="about" className="scroll-mt-20">
+              <TerminalWindow title="/about_me">
+                <TerminalPrompt text="cat about.txt" />
+                <div className="mt-4 space-y-2 text-sm">
+                  {ABOUT.map(([key, value]) => (
+                    <div key={key} className="flex gap-3">
+                      <span className="text-gruv-orange w-24 shrink-0">{key}:</span>
+                      <span className="text-gruv-fg0">{value}</span>
                     </div>
                   ))}
                 </div>
+                <p className="text-gruv-fg2 text-sm leading-7 mt-5">
+                  I&apos;m a full-time software engineer passionate about backend
+                  cloud integrations, building impactful software, and growing
+                  with every project I take on.
+                </p>
+              </TerminalWindow>
+            </section>
+          </main>
+
+          {/* Right info column */}
+          <aside className="space-y-6">
+            {/* ---------- /profile ---------- */}
+            <TerminalWindow title="/profile">
+              <div className="flex flex-col items-center text-center">
+                <div className="relative w-28 h-28 overflow-hidden rounded-md border border-gruv-bg3 pixel-border">
+                  <Image
+                    src={aneesh}
+                    alt="Aneesh Sharma"
+                    fill
+                    sizes="112px"
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-gruv-yellow font-medium mt-4">Aneesh Sharma</p>
+                <div className="flex items-center gap-1.5 mt-3 text-xs">
+                  <span className="w-2 h-2 rounded-full bg-gruv-green"></span>
+                  <span className="text-gruv-fg2">open to opportunities</span>
+                </div>
               </div>
+            </TerminalWindow>
+
+            {/* ---------- /quote ---------- */}
+            <TerminalWindow title="/quote" className="hidden lg:block">
+              <TerminalPrompt text="fortune" showCursor={false} />
+              <p className="text-gruv-fg1 text-sm leading-7 mt-3">
+                “The best way to predict the future is to invent it.”
+              </p>
+              <p className="text-gruv-gray text-xs mt-3">— Alan Kay</p>
+            </TerminalWindow>
+
+            {/* ---------- /skills ---------- */}
+            <section id="skills" className="scroll-mt-20">
+              <TerminalWindow title="/skills">
+                <TerminalPrompt text="skills --list" showCursor={false} />
+                <div className="mt-4 space-y-5">
+                  {SKILL_GROUPS.map((group) => (
+                    <div key={group.title}>
+                      <p className="text-gruv-orange text-sm font-medium mb-2">
+                        &#123; {group.title} &#125;
+                      </p>
+                      <p className="text-gruv-fg1 text-[13px] leading-6">
+                        {group.items.join("  ")}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </TerminalWindow>
+            </section>
+
+            {/* Social quick links (mobile) */}
+            <div className="lg:hidden text-2xl flex gap-4 text-gruv-fg1 px-2">
+              <a
+                href="https://www.linkedin.com/in/aneeshsharma9/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gruv-blue"
+                aria-label="LinkedIn"
+              >
+                <AiFillLinkedin />
+              </a>
+              <a
+                href="https://github.com/AneeshSharma9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gruv-aqua"
+                aria-label="GitHub"
+              >
+                <AiFillGithub />
+              </a>
+              <a
+                href="https://www.instagram.com/aneesh._.sharma/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gruv-purple"
+                aria-label="Instagram"
+              >
+                <AiFillInstagram />
+              </a>
             </div>
-          </motion.div>
-        </section>
-      </main>
+          </aside>
+        </div>
+      </div>
+
+      {/* Desktop decorations - lower left */}
+      <PixelDecor className="fixed bottom-0 left-0 hidden lg:block" />
+
+      <footer className="text-center text-xs text-gruv-gray py-8 font-mono">
+        <span className="text-gruv-yellow">guest@aneesh</span>
+        <span className="text-gruv-gray">:</span>
+        <span className="text-gruv-blue">~/desktop</span>
+        <span className="text-gruv-gray">$ </span>
+        <span className="terminal-cursor-static" />
+        <br />
+        <span className="mt-2 inline-block text-gruv-neutral">
+          © {mounted ? new Date().getFullYear() : ""} Aneesh Sharma
+        </span>
+      </footer>
     </div>
   );
 }
