@@ -83,7 +83,6 @@ export default function Contact() {
                   <div className="text-gruv-green text-sm flex items-center gap-2">
                     <span>&#10003;</span>
                     <span>message sent — thanks for reaching out.</span>
-                    <span className="terminal-cursor-static" />
                   </div>
                 ) : (
                   <form
@@ -142,7 +141,6 @@ export default function Contact() {
                       >
                         send_message
                       </button>
-                      <span className="terminal-cursor-static" />
                     </div>
                   </form>
                 )}

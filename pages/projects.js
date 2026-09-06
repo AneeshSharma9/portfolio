@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 import StatusBar from "../components/StatusBar";
@@ -41,25 +42,38 @@ export default function Projects() {
                 {data.map((item, index) => (
                   <div
                     key={item.id}
-                    className="group py-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-6 transition-colors hover:bg-gruv-bg0/40 px-2 -mx-2"
+                    className="group py-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 transition-colors hover:bg-gruv-bg0/40 px-2 -mx-2"
                   >
-                    <span className="text-gruv-gray text-sm w-8 shrink-0">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <a
-                      href={item.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 group"
-                    >
-                      <span className="text-gruv-fg0 font-medium group-hover:text-gruv-yellow transition-colors">
-                        {item.name}
+                    <div className="flex items-center gap-3 sm:gap-6 sm:flex-1 min-w-0">
+                      <span className="text-gruv-gray text-sm w-8 shrink-0">
+                        {String(index + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-gruv-aqua transition-transform group-hover:translate-x-1">
-                        &#8594;
-                      </span>
-                    </a>
-                    <div className="md:ml-auto flex items-center gap-3 text-xs">
+                      {item.image && (
+                        <div className="shrink-0">
+                          <Image
+                            src={item.image}
+                            alt={`${item.name} screenshot`}
+                            width={48}
+                            height={48}
+                            className="w-auto h-8 object-contain"
+                          />
+                        </div>
+                      )}
+                      <a
+                        href={item.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 group"
+                      >
+                        <span className="text-gruv-fg0 font-medium group-hover:text-gruv-yellow transition-colors">
+                          {item.name}
+                        </span>
+                        <span className="text-gruv-aqua transition-transform group-hover:translate-x-1">
+                          &#8594;
+                        </span>
+                      </a>
+                    </div>
+                    <div className="sm:ml-auto flex items-center gap-3 text-xs ml-11">
                       {item.live ? (
                         <a
                           href={item.live}
