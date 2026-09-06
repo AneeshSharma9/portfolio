@@ -203,9 +203,6 @@ export default function Contact() {
                   <span className="text-gruv-gray">average reply:</span>{" "}
                   <span className="text-gruv-aqua">&lt; 24h</span>
                 </p>
-                <p className="mt-2 text-gruv-fg2 text-[13px] leading-6">
-                  Open to new opportunities in software engineering.
-                </p>
               </div>
             </TerminalWindow>
           </aside>

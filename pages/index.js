@@ -21,19 +21,29 @@ const ABOUT = [
 
 const SKILL_GROUPS = [
   {
-    title: "Languages",
+    title: "Primary",
     icon: "code",
-    items: ["Python", "Java", "C++", "SQL", "JavaScript", "Rust", "Ruby", "R", "C#", "OCaml", "Kotlin"],
+    items: ["Python", "Java", "SQL", "JavaScript/TypeScript"],
   },
   {
-    title: "Frameworks & Tools",
+    title: "Backend & Cloud",
     icon: "gear",
-    items: ["React", "Next.js", "Node.js", "Express", "Tailwind", "Git", "Docker", "Linux", "Flask", "PyTorch"],
+    items: ["Node.js", "Flask", "AWS", "Azure", "Docker", "APIs", "Databases", "Firebase", "Heroku", "Pandas"],
   },
   {
-    title: "Other",
+    title: "Frontend",
     icon: "layers",
-    items: ["Problem Solving", "System Design", "APIs", "Databases", "Cloud (AWS)", "Android", "Unity"],
+    items: ["React", "Next.js", "Tailwind", "Bootstrap", "AngularJS"],
+  },
+  {
+    title: "Development",
+    icon: "terminal",
+    items: ["Git", "Linux", "System Design"],
+  },
+  {
+    title: "Additional",
+    icon: "layers",
+    items: ["C++", "Rust", "Kotlin", "C#", "Ruby", "R", "OCaml"],
   },
 ];
 
@@ -182,10 +192,6 @@ export default function Home() {
                   />
                 </div>
                 <p className="text-gruv-yellow font-medium mt-4">Aneesh Sharma</p>
-                <div className="flex items-center gap-1.5 mt-3 text-xs">
-                  <span className="w-2 h-2 rounded-full bg-gruv-green"></span>
-                  <span className="text-gruv-fg2">open to opportunities</span>
-                </div>
               </div>
             </TerminalWindow>
 

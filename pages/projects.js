@@ -91,6 +91,18 @@ export default function Projects() {
                             {item.description}
                           </p>
                         )}
+                        {item.tech?.length > 0 && (
+                          <div className="mt-2 flex flex-wrap gap-1.5">
+                            {item.tech.map((t) => (
+                              <span
+                                key={t}
+                                className="px-1.5 py-0.5 border border-gruv-bg3 text-gruv-aqua text-[11px] leading-4 rounded-sm"
+                              >
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="sm:ml-auto flex items-center gap-3 text-xs ml-11 shrink-0">

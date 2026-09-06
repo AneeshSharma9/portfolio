@@ -15,6 +15,7 @@ const EXPERIENCE = [
     company: "W.L. Gore & Associates",
     companyUrl: "https://www.gore.com",
     period: "June 2025 - Present",
+    focus: "Backend · Cloud Integrations · AI Automation",
     points: [
       "Design and build backend cloud integrations connecting Gore's internal systems, using Azure Function Apps to orchestrate data flows between disparate platforms.",
       "Develop integration services primarily in TypeScript, with Python handling data processing and automation across pipelines.",
@@ -172,6 +173,12 @@ export default function Resume() {
                         [{job.period}]
                       </span>
                     </div>
+                    {job.focus && (
+                    <p className="mt-1 text-gruv-fg2 text-[13px]">
+                      <span className="text-gruv-gray">focus:</span>{" "}
+                      <span className="text-gruv-aqua">{job.focus}</span>
+                    </p>
+                  )}
                     <ul className="mt-5 space-y-3 text-gruv-fg1 text-[15px] leading-7">
                       {job.points.map((point, i) => (
                         <li key={i} className="flex gap-3">
@@ -240,10 +247,6 @@ export default function Resume() {
                 <div className="flex justify-between">
                   <span className="text-gruv-gray">role</span>
                   <span>Software Engineer</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gruv-gray">status</span>
-                  <span className="text-gruv-green">open</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gruv-gray">base</span>
