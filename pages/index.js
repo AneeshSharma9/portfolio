@@ -71,8 +71,7 @@ export default function Home() {
           name="twitter:description"
           content="Portfolio of Aneesh Sharma, a software engineer specializing in backend and cloud integrations."
         />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+        </Head>
 
       <div className="sticky top-0 z-40">
         <StatusBar />

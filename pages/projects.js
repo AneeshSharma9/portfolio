@@ -33,8 +33,7 @@ export default function Projects() {
         />
         <meta property="og:url" content="https://aneeshsharma9.github.io/portfolio/projects" />
         <meta property="og:site_name" content="Aneesh Sharma" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+        </Head>
 
       <div className="sticky top-0 z-40">
         <StatusBar />

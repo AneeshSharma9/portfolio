@@ -68,8 +68,7 @@ export default function Contact() {
         />
         <meta property="og:url" content="https://aneeshsharma9.github.io/portfolio/contact" />
         <meta property="og:site_name" content="Aneesh Sharma" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+        </Head>
 
       <div className="sticky top-0 z-40">
         <StatusBar />
