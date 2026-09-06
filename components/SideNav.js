@@ -39,7 +39,7 @@ export default function SideNav() {
               href={item.path}
               className={`flex items-center gap-2 px-2 py-1.5 text-sm rounded transition-colors ${
                 active
-                  ? "bg-gruv-bg3 text-gruv-yellow"
+                  ? "nav-active bg-gruv-bg3 text-gruv-yellow"
                   : "text-gruv-fg1 hover:bg-gruv-bg2 hover:text-gruv-fg0"
               }`}
             >
@@ -61,7 +61,7 @@ export default function SideNav() {
               }}
               className={`flex items-center gap-2 px-2 py-1.5 text-sm rounded transition-colors ${
                 pathname === "/"
-                  ? "bg-gruv-bg3 text-gruv-yellow"
+                  ? "nav-active bg-gruv-bg3 text-gruv-yellow"
                   : "text-gruv-fg1 hover:bg-gruv-bg2 hover:text-gruv-fg0"
               }`}
             >

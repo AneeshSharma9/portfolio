@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function StatusBar() {
   const [time, setTime] = useState("");
@@ -32,7 +33,7 @@ export default function StatusBar() {
           <span className="hidden sm:inline">connected</span>
         </span>
         <span className="text-gruv-fg1">{time}</span>
-        <span className="w-2 h-2 bg-gruv-yellow animate-pulse"></span>
+        <ThemeToggle />
       </div>
     </div>
   );
