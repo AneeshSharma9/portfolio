@@ -1,10 +1,13 @@
+import { motion } from "framer-motion";
+
 export default function TerminalWindow({
   title,
   children,
   className = "",
   dots = true,
+  animate = true,
 }) {
-  return (
+  const content = (
     <div
       className={`bg-gruv-bg1 border border-gruv-bg3 rounded-md pixel-border overflow-hidden ${className}`}
     >
@@ -25,5 +28,18 @@ export default function TerminalWindow({
       </div>
       <div className="p-5 md:p-6">{children}</div>
     </div>
+  );
+
+  if (!animate) return content;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
+      {content}
+    </motion.div>
   );
 }
