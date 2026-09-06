@@ -222,7 +222,7 @@ export default function Resume() {
               <div className="text-sm space-y-2 text-gruv-fg1">
                 <div className="flex justify-between">
                   <span className="text-gruv-gray">role</span>
-                  <span>Engineer</span>
+                  <span>Software Engineer</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gruv-gray">status</span>

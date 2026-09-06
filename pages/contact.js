@@ -41,10 +41,10 @@ export default function Contact() {
               <p className="text-gruv-fg1 text-sm leading-7 mt-5">
                 Submit the form below or send me an email at{" "}
                 <a
-                  href="mailto:ansh993@gmail.com"
+                  href="mailto:aneeshsharma.dev@gmail.com"
                   className="text-gruv-green hover:text-gruv-aqua transition-colors"
                 >
-                  ansh993@gmail.com
+                  aneeshsharma.dev@gmail.com
                 </a>
               </p>
 
@@ -94,7 +94,7 @@ export default function Contact() {
                     <input
                       type="hidden"
                       name="access_key"
-                      value="ac473e28-2273-4ac0-bae0-c0f723d219cb"
+                      value="51ec4cc3-fa84-4abb-b25b-3415926ab67f"
                     />
                     <div className="flex flex-col sm:flex-row gap-4">
                       <label className="flex-1">
