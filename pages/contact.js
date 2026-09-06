@@ -11,11 +11,46 @@ import PixelDecor from "../components/PixelDecor";
 
 export default function Contact() {
   const [mounted, setMounted] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle");
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (sending) return;
+    setSending(true);
+    setError("");
+
+    const form = e.currentTarget;
+    const payload = {
+      access_key: "51ec4cc3-fa84-4abb-b25b-3415926ab67f",
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value,
+    };
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = await res.json();
+      if (!res.ok || json.success === false) {
+        throw new Error(json.message || "Failed to send message");
+      }
+      setStatus("sent");
+    } catch (err) {
+      setError(err.message || "Something went wrong — please try again.");
+      setStatus("error");
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gruv-bg1 noise-bg text-gruv-fg0 font-mono">
@@ -79,17 +114,16 @@ export default function Contact() {
               </div>
 
               <div className="mt-6">
-                {sent ? (
+                {status === "sent" ? (
                   <div className="text-gruv-green text-sm flex items-center gap-2">
                     <span>&#10003;</span>
                     <span>message sent — thanks for reaching out.</span>
                   </div>
                 ) : (
                   <form
-                    method="POST"
-                    action="https://api.web3forms.com/submit"
+                    onSubmit={handleSubmit}
                     className="flex flex-col"
-                    onSubmit={() => setSent(true)}
+                    noValidate
                   >
                     <input
                       type="hidden"
@@ -128,20 +162,22 @@ export default function Contact() {
                         required
                       ></textarea>
                     </label>
-                    <input
-                      type="hidden"
-                      name="redirect"
-                      value="https://web3forms.com/success"
-                    />
                     <div className="mt-5 flex items-center gap-2">
                       <span className="text-gruv-yellow">&#62;</span>
                       <button
                         type="submit"
-                        className="text-gruv-green hover:text-gruv-bg1 hover:bg-gruv-green border border-gruv-green px-5 py-2 rounded transition-colors text-sm"
+                        disabled={sending}
+                        className="text-gruv-green hover:text-gruv-bg1 hover:bg-gruv-green border border-gruv-green px-5 py-2 rounded transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
                       >
-                        send_message
+                        {sending ? "sending..." : "send_message"}
                       </button>
                     </div>
+                    {status === "error" && (
+                      <p className="mt-4 text-gruv-red text-sm flex items-center gap-2">
+                        <span>&#10007;</span>
+                        <span>{error}</span>
+                      </p>
+                    )}
                   </form>
                 )}
               </div>

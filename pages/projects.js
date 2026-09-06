@@ -44,7 +44,7 @@ export default function Projects() {
                     key={item.id}
                     className="group py-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 transition-colors hover:bg-gruv-bg0/40 px-2 -mx-2"
                   >
-                    <div className="flex items-center gap-3 sm:gap-6 sm:flex-1 min-w-0">
+                    <div className="flex items-center gap-3 sm:gap-6 w-full min-w-0">
                       <span className="text-gruv-gray text-sm w-8 shrink-0">
                         {String(index + 1).padStart(2, "0")}
                       </span>
@@ -59,22 +59,30 @@ export default function Projects() {
                           />
                         </div>
                       )}
-                      <a
-                        href={item.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 group"
-                      >
-                        <span className="text-gruv-fg0 font-medium group-hover:text-gruv-yellow transition-colors">
-                          {item.name}
-                        </span>
-                        <span className="text-gruv-aqua transition-transform group-hover:translate-x-1">
-                          &#8594;
-                        </span>
-                      </a>
+                      <div className="min-w-0">
+                        <a
+                          href={item.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-3 group/name"
+                        >
+                          <span className="text-gruv-fg0 font-medium group-hover:text-gruv-yellow transition-colors">
+                            {item.name}
+                          </span>
+                          <span className="text-gruv-aqua opacity-0 -translate-x-1 group-hover/name:opacity-100 group-hover/name:translate-x-0 transition-all">
+                            &#8594;
+                          </span>
+                        </a>
+                        {item.description && (
+                          <p className="text-gruv-fg2 text-[13px] leading-6 mt-1">
+                            <span className="text-gruv-gray">#</span>{" "}
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                    <div className="sm:ml-auto flex items-center gap-3 text-xs ml-11">
-                      {item.live ? (
+                    <div className="sm:ml-auto flex items-center gap-3 text-xs ml-11 shrink-0">
+                      {item.live && (
                         <a
                           href={item.live}
                           target="_blank"
@@ -83,8 +91,6 @@ export default function Projects() {
                         >
                           [live]
                         </a>
-                      ) : (
-                        <span className="text-gruv-gray">[n/a]</span>
                       )}
                       <a
                         href={item.github}

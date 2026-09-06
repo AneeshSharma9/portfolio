@@ -10,6 +10,7 @@ import PixelDecor from "../components/PixelDecor";
 
 const EXPERIENCE = [
   {
+    id: "gore-swe",
     role: "Software Developer - Integrations",
     company: "W.L. Gore & Associates",
     companyUrl: "https://www.gore.com",
@@ -22,6 +23,7 @@ const EXPERIENCE = [
     ],
   },
   {
+    id: "gore-intern",
     role: "IT Application Development Intern",
     company: "W.L. Gore & Associates",
     companyUrl: "https://www.gore.com",
@@ -33,6 +35,7 @@ const EXPERIENCE = [
     ],
   },
   {
+    id: "medley",
     role: "Software Engineer Intern",
     company: "Medley Networks Inc.",
     companyUrl: "https://www.medleynetworks.com",
@@ -44,6 +47,7 @@ const EXPERIENCE = [
     ],
   },
   {
+    id: "prudential",
     role: "Software Engineer Intern",
     company: "Prudential Financial",
     companyUrl: "https://www.prudential.com",
@@ -56,6 +60,7 @@ const EXPERIENCE = [
     ],
   },
   {
+    id: "code-ninjas",
     role: "Programming Tutor",
     company: "Code Ninjas",
     companyUrl: "https://www.codeninjas.com",
@@ -135,7 +140,7 @@ export default function Resume() {
               <div className="mt-8 space-y-10">
                 {EXPERIENCE.map((job) => (
                   <div
-                    key={job.company}
+                    key={job.id}
                     className="border-b border-gruv-bg3 pb-10 last:border-b-0 last:pb-0"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
