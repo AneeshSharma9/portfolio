@@ -1,133 +1,184 @@
-import Head from 'next/head'
-import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from 'react-icons/ai'
-import Image from "next/image"
-import signature from "../public/signature.png"
-import signatureDark from "../public/signature-dark.png"
+import Head from "next/head";
+import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from "react-icons/ai";
+import { useState, useEffect } from "react";
 
-import { useState, useEffect } from "react"
-import Link from 'next/link'
-import Typewriter from 'typewriter-effect';
-import { motion, useScroll, useSpring } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import StatusBar from "../components/StatusBar";
+import SideNav from "../components/SideNav";
+import MobileNav from "../components/MobileNav";
+import TerminalWindow from "../components/TerminalWindow";
+import TerminalPrompt from "../components/TerminalPrompt";
+import PixelDecor from "../components/PixelDecor";
 
+export default function Contact() {
+  const [mounted, setMounted] = useState(false);
+  const [sent, setSent] = useState(false);
 
-export default function Home() {
-    const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    useEffect(() => {
-        themeCheck();
-    }, [darkMode]);
+  return (
+    <div className="min-h-screen bg-gruv-bg1 noise-bg text-gruv-fg0 font-mono">
+      <Head>
+        <title>Aneesh Sharma — Contact</title>
+      </Head>
 
-    useEffect(() => {
-        themeCheck();
-    }, []);
+      <div className="sticky top-0 z-40">
+        <StatusBar />
+        <MobileNav />
+      </div>
 
-    const themeCheck = () => {
-        if (
-            localStorage.theme === "dark" ||
-            (!("theme" in localStorage) &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-            document.documentElement.classList.add("dark");
-            setDarkMode(true);
-        } else {
-            document.documentElement.classList.remove("dark");
-            setDarkMode(false);
-        }
-    }
+      <div className="max-w-[1500px] mx-auto px-4 lg:px-10 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[180px_1fr_260px] gap-5 items-start">
+          <aside className="hidden lg:block lg:sticky lg:top-20">
+            <SideNav />
+          </aside>
 
-    const toggleDarkMode = () => {
-        const newMode = !darkMode;
-        localStorage.theme = newMode ? "dark" : "light";
-        setDarkMode(newMode);
-    };
+          <main>
+            <TerminalWindow title="/contact">
+              <TerminalPrompt text="mail --compose" />
 
-    const symbol = darkMode ? "🌙" : "☀️";
+              <p className="text-gruv-fg1 text-sm leading-7 mt-5">
+                Submit the form below or send me an email at{" "}
+                <a
+                  href="mailto:ansh993@gmail.com"
+                  className="text-gruv-green hover:text-gruv-aqua transition-colors"
+                >
+                  ansh993@gmail.com
+                </a>
+              </p>
 
-    const signatureSrc = darkMode ? signatureDark : signature;
+              <div className="flex items-center gap-4 mt-4 text-2xl text-gruv-fg1">
+                <a
+                  href="https://www.linkedin.com/in/aneeshsharma9/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gruv-blue transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <AiFillLinkedin />
+                </a>
+                <a
+                  href="https://www.instagram.com/aneesh._.sharma/?hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gruv-purple transition-colors"
+                  aria-label="Instagram"
+                >
+                  <AiFillInstagram />
+                </a>
+                <a
+                  href="https://github.com/AneeshSharma9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gruv-aqua transition-colors"
+                  aria-label="GitHub"
+                >
+                  <AiFillGithub />
+                </a>
+              </div>
 
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    });
+              <div className="mt-6">
+                {sent ? (
+                  <div className="text-gruv-green text-sm flex items-center gap-2">
+                    <span>&#10003;</span>
+                    <span>message sent — thanks for reaching out.</span>
+                    <span className="terminal-cursor-static" />
+                  </div>
+                ) : (
+                  <form
+                    method="POST"
+                    action="https://api.web3forms.com/submit"
+                    className="flex flex-col"
+                    onSubmit={() => setSent(true)}
+                  >
+                    <input
+                      type="hidden"
+                      name="access_key"
+                      value="ac473e28-2273-4ac0-bae0-c0f723d219cb"
+                    />
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <label className="flex-1">
+                        <span className="text-gruv-orange text-xs">&#123; name &#125;</span>
+                        <input
+                          className="mt-1 w-full bg-gruv-bg0 border border-gruv-bg3 rounded px-3 py-2 text-gruv-fg0 text-sm focus:outline-none focus:border-gruv-yellow transition-colors"
+                          type="text"
+                          placeholder="your_name"
+                          name="name"
+                          required
+                        />
+                      </label>
+                      <label className="flex-1">
+                        <span className="text-gruv-orange text-xs">&#123; email &#125;</span>
+                        <input
+                          className="mt-1 w-full bg-gruv-bg0 border border-gruv-bg3 rounded px-3 py-2 text-gruv-fg0 text-sm focus:outline-none focus:border-gruv-yellow transition-colors"
+                          type="email"
+                          placeholder="you@example.com"
+                          name="email"
+                          required
+                        />
+                      </label>
+                    </div>
+                    <label className="mt-4 block">
+                      <span className="text-gruv-orange text-xs">&#123; message &#125;</span>
+                      <textarea
+                        className="mt-1 w-full bg-gruv-bg0 border border-gruv-bg3 rounded px-3 py-2 text-gruv-fg0 text-sm focus:outline-none focus:border-gruv-yellow transition-colors"
+                        name="message"
+                        rows="6"
+                        placeholder="type your message..."
+                        required
+                      ></textarea>
+                    </label>
+                    <input
+                      type="hidden"
+                      name="redirect"
+                      value="https://web3forms.com/success"
+                    />
+                    <div className="mt-5 flex items-center gap-2">
+                      <span className="text-gruv-yellow">&#62;</span>
+                      <button
+                        type="submit"
+                        className="text-gruv-green hover:text-gruv-bg1 hover:bg-gruv-green border border-gruv-green px-5 py-2 rounded transition-colors text-sm"
+                      >
+                        send_message
+                      </button>
+                      <span className="terminal-cursor-static" />
+                    </div>
+                  </form>
+                )}
+              </div>
+            </TerminalWindow>
+          </main>
 
-    const [ref0, inView0] = useInView({
-        threshold: 0.1,
-        triggerOnce: false
-    });
-
-    const variants = {
-        visible: { opacity: 1, scale: 1, y: 0 },
-        hidden: {
-            opacity: 0,
-            scale: 0.65,
-            y: 50
-        }
-    };
-
-    return (
-        <div className={darkMode ? "dark" : ""}>
-            <Head>
-                <title>Aneesh Sharma Contact</title>
-            </Head>
-
-            <main className='bg-white lg:px-35 dark:bg-gray-900'>
-                <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
-                <section className='min-h-screen'>
-                    <nav className='md:flex py-2 2xl:py-7 mb-12 2xl:px-10 md:justify-between sticky top-0 z-20 mx-auto bg-gray-100 dark:bg-gray-800 shadow-lg 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-none'>
-                        <div className='flex justify-center md:justify-normal'>
-                            <Image className="scale-50 md:scale-75" src={signatureSrc} alt="signatureLogo"></Image>
-                        </div>
-
-                        <ul className='flex items-center gap-7 justify-center px-5'>
-                            <li><h2 onClick={toggleDarkMode} className='cursor-pointer text-2xl'>{symbol}</h2></li>
-                            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/">Home</Link></li>
-                            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/resume">Resume</Link></li>
-                            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/contact">Contact</Link></li>
-                        </ul>
-                    </nav>
-
-                    <motion.div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto' animate={inView0 ? "visible" : "hidden"}
-                        variants={variants}
-                        exit="hidden"
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        ref={ref0}>
-                        <div className='text-center py-10 '>
-                            <div className='text-5xl  text-teal-500 font-bold md:text-6xl tracking-tight'>
-                                <Typewriter
-                                    onInit={(typewriter) => {
-                                        typewriter.typeString('Contact').start()
-                                    }}
-                                />
-                            </div>
-                        </div>
-
-                        <div className='text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400'>
-                            <a href="https://www.linkedin.com/in/aneeshsharma9/" target="_blank"><AiFillLinkedin /></a>
-                            <a href="https://www.instagram.com/aneesh._.sharma/?hl=en" target="_blank"><AiFillInstagram /></a>
-                            <a href="https://github.com/AneeshSharma9" target="_blank"><AiFillGithub /></a>
-                        </div>
-
-                        <div name='contact' className='w-full py-14 flex justify-center items-center'>
-                            <form method='POST' action="https://api.web3forms.com/submit" className='flex flex-col max-w-[600px] w-full'>
-                                <input type="hidden" name="access_key" value="ac473e28-2273-4ac0-bae0-c0f723d219cb" />
-                                <div className='pb-8'>
-                                    <p className='text-gray-600 dark:text-gray-300 font-bold'>Submit the form below or send me an email at <span className='text-teal-500 font-bold'>ansh993@gmail.com</span></p>
-                                </div>
-                                <input className='border-gray-500 dark:bg-gray-300 p-2 rounded-md' type="text" placeholder='Name' name='name' />
-                                <input className='my-4 p-2 border-gray-500 dark:bg-gray-300 rounded-md' type="email" placeholder='Email' name='email' />
-                                <textarea className='border-gray-500 dark:bg-gray-300 p-2 rounded-md' name="message" rows="5" placeholder='Message'></textarea>
-                                <input type="hidden" name="redirect" value="https://web3forms.com/success"></input>
-                                <button className='dark:text-gray-300 border-gray-500 border-2 hover:bg-teal-500 hover:border-teal-500 px-8 py-3 my-8 mx-auto flex items-center rounded-md'>Send</button>
-                            </form>
-                        </div>
-                    </motion.div>
-                </section>
-
-
-            </main>
+          <aside className="lg:sticky lg:top-20 hidden lg:block">
+            <TerminalWindow title="/reply_time">
+              <div className="text-sm text-gruv-fg1 leading-6">
+                <p>
+                  <span className="text-gruv-gray">average reply:</span>{" "}
+                  <span className="text-gruv-aqua">&lt; 24h</span>
+                </p>
+                <p className="mt-2 text-gruv-fg2 text-[13px] leading-6">
+                  Open to new opportunities in software engineering.
+                </p>
+              </div>
+            </TerminalWindow>
+          </aside>
         </div>
-    );
+      </div>
+
+      <PixelDecor className="fixed bottom-0 left-0 hidden lg:block" />
+
+      <footer className="text-center text-xs text-gruv-gray py-8 font-mono">
+        <span className="text-gruv-yellow">guest@aneesh</span>
+        <span className="text-gruv-gray">:</span>
+        <span className="text-gruv-blue">~/contact</span>
+        <span className="text-gruv-gray">$ </span>
+        <span className="terminal-cursor-static" />
+        <br />
+        <span className="mt-2 inline-block text-gruv-neutral">
+          © {mounted ? new Date().getFullYear() : ""} Aneesh Sharma
+        </span>
+      </footer>
+    </div>
+  );
 }

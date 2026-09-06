@@ -1,279 +1,256 @@
-'use client';
+import Head from "next/head";
+import { useState, useEffect } from "react";
 
-import Link from 'next/link';
-import Head from 'next/head'
-import Image from "next/image"
-import { useState, useEffect } from "react"
-import { Timeline } from 'flowbite-react';
-import signature from "../public/signature.png"
-import signatureDark from "../public/signature-dark.png"
-import umdLogo from "../public/university-of-maryland-logo-vector-1.png"
-import mcstLogo from "../public/mcst.logo.png"
-import medleyLogo from "../public/medley.png"
-import prudentialLogo from "../public/prudential.png"
-import goreLogo from "../public/gore.png"
-import Typewriter from 'typewriter-effect';
-import { motion, useScroll, useSpring } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import StatusBar from "../components/StatusBar";
+import SideNav from "../components/SideNav";
+import MobileNav from "../components/MobileNav";
+import TerminalWindow from "../components/TerminalWindow";
+import TerminalPrompt from "../components/TerminalPrompt";
+import PixelDecor from "../components/PixelDecor";
+
+const EXPERIENCE = [
+  {
+    role: "Software Developer - Integrations",
+    company: "W.L. Gore & Associates",
+    companyUrl: "https://www.gore.com",
+    period: "June 2025 - Present",
+    points: [
+      "Design and build backend cloud integrations connecting Gore's internal systems, using Azure Function Apps to orchestrate data flows between disparate platforms.",
+      "Develop integration services primarily in TypeScript, with Python handling data processing and automation across pipelines.",
+      "Work with AI agents running in production workflows, integrating and tuning them to automate and streamline business processes at scale.",
+      "Collaborate with cross-functional teams to design scalable, observable integration architecture and monitor production health.",
+    ],
+  },
+  {
+    role: "IT Application Development Intern",
+    company: "W.L. Gore & Associates",
+    companyUrl: "https://www.gore.com",
+    period: "June 2024 - November 2024",
+    points: [
+      "Developed Python-based IT applications for the Fuel Cell Team, automating data integration and analysis processes for Gore Clean Energy initiatives.",
+      "Streamlined the data processing workflow by transforming raw CSV data into actionable insights, reducing manual effort and processing time by 95%.",
+      "Created a database system to store and compare previously analyzed results with newer data, facilitating identification of significant changes and trends over time.",
+    ],
+  },
+  {
+    role: "Software Engineer Intern",
+    company: "Medley Networks Inc.",
+    companyUrl: "https://www.medleynetworks.com",
+    period: "June 2023 - May 2024",
+    points: [
+      "Designed and developed an Android application that streamlined the process of capturing and labeling pictures for employees, improving efficiency and accuracy in data management.",
+      "Integrated Dropbox API into the Android app, automating the upload process and enabling seamless synchronization of labeled pictures to a shared Dropbox folder.",
+      "Created Python scripts leveraging the Pandas and Excel libraries to automate various manual tasks, reducing time and effort required for data processing by 95%.",
+    ],
+  },
+  {
+    role: "Software Engineer Intern",
+    company: "Prudential Financial",
+    companyUrl: "https://www.prudential.com",
+    period: "September 2020 - August 2021",
+    points: [
+      "Developed automated test scripts using Java and Selenium WebDriver, enhancing the efficiency and accuracy of software testing processes.",
+      "Collaborated with the development team to design and implement custom applications using ServiceNow and JavaScript, resulting in streamlined workflows.",
+      "Maintained and expanded a comprehensive testing framework for web applications, reducing manual testing efforts by 90%.",
+      "Utilized Tableau to analyze and visualize data related to service requests, enabling stakeholders to make data-driven decisions.",
+    ],
+  },
+  {
+    role: "Programming Tutor",
+    company: "Code Ninjas",
+    companyUrl: "https://www.codeninjas.com",
+    period: "July 2020 - August 2021",
+    points: [
+      "Designed and delivered engaging computer science lessons to students of varying ages, introducing coding fundamentals through JavaScript, Python, Unity, Minecraft modding, and Scratch.",
+      "Developed age-appropriate curriculum and instructional materials to facilitate hands-on learning experiences.",
+      "Implemented innovative teaching methodologies, including project-based learning and interactive coding exercises.",
+    ],
+  },
+];
+
+const EDUCATION = [
+  {
+    degree: "Bachelor of Computer Science",
+    school: "University of Maryland, College Park, Maryland",
+    period: "2021-2025",
+    tag: "UMD",
+  },
+  {
+    degree: "Academy of Computer & Information Sciences",
+    school: "Morris County School of Technology, Denville, New Jersey",
+    period: "2017-2021",
+    tag: "MCST",
+  },
+];
+
+const COURSES = [
+  ["Object-Oriented Programming I", "CMSC131 - UMD"],
+  ["Object-Oriented Programming II", "CMSC132 - UMD"],
+  ["Introduction to Computer Systems", "CMSC216 - UMD"],
+  ["Discrete Structures", "CMSC250 - UMD"],
+  ["Organization of Programming Languages", "CMSC330 - UMD"],
+  ["Algorithms", "CMSC351 - UMD"],
+  ["Introduction to Compilers", "CMSC430 - UMD"],
+  ["Introduction to Data Science", "CMSC320 - UMD"],
+  ["Advanced Data Structures", "CMSC420 - UMD"],
+  ["Computer Vision", "CMSC426 - UMD"],
+  ["AP Computer Science Principles", "MCST"],
+  ["AP Computer Science A", "MCST"],
+];
+
+const OTHER = [
+  ["Hardware Automation Engineer", "CubeSat Team, SEDS @ UMD"],
+  ["Member", "South Asian Student Association @ UMD"],
+  ["Head of Logistics", "HackMCST @ MCST"],
+];
 
 export default function Resume() {
-    const [darkMode, setDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-    useEffect(() => {
-        themeCheck();
-    }, [darkMode]);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    useEffect(() => {
-        themeCheck();
-    }, []);
+  return (
+    <div className="min-h-screen bg-gruv-bg1 noise-bg text-gruv-fg0 font-mono">
+      <Head>
+        <title>Aneesh Sharma — Resume</title>
+      </Head>
 
-    const themeCheck = () => {
-        if (
-            localStorage.theme === "dark" ||
-            (!("theme" in localStorage) &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-            document.documentElement.classList.add("dark");
-            setDarkMode(true);
-        } else {
-            document.documentElement.classList.remove("dark");
-            setDarkMode(false);
-        }
-    }
+      <div className="sticky top-0 z-40">
+        <StatusBar />
+        <MobileNav />
+      </div>
 
-    const toggleDarkMode = () => {
-        const newMode = !darkMode;
-        localStorage.theme = newMode ? "dark" : "light";
-        setDarkMode(newMode);
-    };
+      <div className="max-w-[1500px] mx-auto px-4 lg:px-10 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[180px_1fr_260px] gap-5 items-start">
+          <aside className="hidden lg:block lg:sticky lg:top-20">
+            <SideNav />
+          </aside>
 
-    const symbol = darkMode ? "🌙" : "☀️";
+          <main className="space-y-6">
+            {/* /experience */}
+            <TerminalWindow title="/experience">
+              <TerminalPrompt text="cat experience.txt" />
+              <div className="mt-8 space-y-10">
+                {EXPERIENCE.map((job) => (
+                  <div
+                    key={job.company}
+                    className="border-b border-gruv-bg3 pb-10 last:border-b-0 last:pb-0"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+                      <h3 className="text-gruv-fg0 font-medium">
+                        <span className="text-gruv-yellow">{job.role}</span>
+                        <span className="text-gruv-fg2"> @ </span>
+                        <a
+                          href={job.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gruv-blue hover:text-gruv-aqua transition-colors"
+                        >
+                          {job.company}
+                        </a>
+                      </h3>
+                      <span className="text-gruv-gray text-xs shrink-0">
+                        [{job.period}]
+                      </span>
+                    </div>
+                    <ul className="mt-5 space-y-3 text-gruv-fg1 text-[15px] leading-7">
+                      {job.points.map((point, i) => (
+                        <li key={i} className="flex gap-3">
+                          <span className="text-gruv-green shrink-0 mt-1">&#9656;</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </TerminalWindow>
 
-    const signatureSrc = darkMode ? signatureDark : signature;
+            {/* /education */}
+            <TerminalWindow title="/education">
+              <TerminalPrompt text="cat education.txt" />
+              <div className="mt-4 space-y-4">
+                {EDUCATION.map((edu) => (
+                  <div key={edu.school} className="flex gap-3 text-sm">
+                    <span className="text-gruv-orange shrink-0">&#9679;</span>
+                    <div>
+                      <p className="text-gruv-fg0 font-medium">
+                        {edu.degree}{" "}
+                        <span className="text-gruv-gray">({edu.period})</span>
+                      </p>
+                      <p className="text-gruv-fg2">{edu.school}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </TerminalWindow>
 
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    });
+            {/* /coursework */}
+            <TerminalWindow title="/coursework">
+              <TerminalPrompt text="ls coursework" />
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
+                {COURSES.map(([name, code]) => (
+                  <div key={name} className="flex justify-between gap-3 border-b border-gruv-bg3 pb-2">
+                    <span className="text-gruv-fg1">{name}</span>
+                    <span className="text-gruv-aqua shrink-0">{code}</span>
+                  </div>
+                ))}
+              </div>
+            </TerminalWindow>
 
-    const [ref0, inView0] = useInView({
-        threshold: 0.1,
-        triggerOnce: false
-    });
+            {/* /other */}
+            <TerminalWindow title="/other">
+              <TerminalPrompt text="cat other.txt" />
+              <div className="mt-4 space-y-3">
+                {OTHER.map(([role, org]) => (
+                  <div key={role} className="flex gap-3 text-sm">
+                    <span className="text-gruv-purple shrink-0">&#9656;</span>
+                    <div>
+                      <p className="text-gruv-fg0 font-medium">{role}</p>
+                      <p className="text-gruv-fg2">{org}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </TerminalWindow>
+          </main>
 
-    const [ref1, inView1] = useInView({
-        threshold: 0.1,
-        triggerOnce: false
-    });
-
-    const [ref2, inView2] = useInView({
-        threshold: 0.1,
-        triggerOnce: false
-    });
-
-    const [ref3, inView3] = useInView({
-        threshold: 0.1,
-        triggerOnce: false
-    });
-
-    const variants = {
-        visible: { opacity: 1, scale: 1, y: 0 },
-        hidden: {
-            opacity: 0,
-            scale: 0.65,
-            y: 50
-        }
-    };
-
-    return (
-        <div className={darkMode ? "dark" : ""}>
-            <Head>
-                <title>Aneesh Sharma Resume</title>
-            </Head>
-            <main className='bg-white lg:px-35 dark:bg-gray-900'>
-                <motion.div className='fixed bg-teal-500 top-0 left-0 right-0 h-3 origin-left z-50' style={{ scaleX }} />
-                <section className='min-h-screen'>
-                    <nav className='md:flex py-2 2xl:py-7 mb-12 2xl:px-10 md:justify-between sticky top-0 z-20 mx-auto bg-gray-100 dark:bg-gray-800 shadow-lg 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-none'>
-                        <div className='flex justify-center md:justify-normal'>
-                            <Image className="scale-50 md:scale-75" src={signatureSrc} alt="signatureLogo"></Image>
-                        </div>
-
-                        <ul className='flex items-center gap-7 justify-center px-5'>
-                            <li><h2 onClick={toggleDarkMode} className='cursor-pointer text-2xl'>{symbol}</h2></li>
-                            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/">Home</Link></li>
-                            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white font-bold' href="/resume">Resume</Link></li>
-                            <li><Link className='text-black hover:border-b-2 hover:border-black hover:py-2 hover:dark:text-white mb-1 dark:text-white dark:hover:border-white' href="/contact">Contact</Link></li>
-                        </ul>
-                    </nav>
-
-                    <motion.div animate={inView0 ? "visible" : "hidden"}
-                        variants={variants}
-                        exit="hidden"
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        ref={ref0}>
-                        <div className='text-center p-10 '>
-                            <div className='text-5xl py-2 text-teal-500 font-bold md:text-6xl tracking-tight'>
-                                <Typewriter
-                                    onInit={(typewriter) => {
-                                        typewriter.typeString('resume').start()
-                                    }}
-                                />
-                            </div>
-                        </div>
-
-                        <div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto'>
-                            <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200 max-w-sm md:max-w-5xl mx-auto'>professional experience</h3>
-                            <div className='shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>
-                                <Timeline className='max-w-sm md:max-w-5xl mx-auto '>
-                                    <Timeline.Item>
-                                        <Timeline.Point />
-                                        <Timeline.Content>
-                                            <Timeline.Time>
-                                                June 2024 - Present
-                                            </Timeline.Time>
-                                            <Timeline.Title>
-                                                IT Application Development Intern @ <a href="https://www.gore.com" target="_blank" className='text-cyan-400 font-bold'>W.L. Gore & Associates</a>
-                                            </Timeline.Title>
-                                            <Timeline.Body>
-                                                <ul className='px-5 text-md text-gray-800 dark:text-gray-400 leading-7 ' style={{ listStyleType: 'circle' }}>
-                                                    <li>Developed <span className='text-teal-500 font-bold'>Python</span>-based IT applications for the Fuel Cell Team, automating data integration and analysis processes for Gore Clean Energy initiatives.</li>
-                                                    <li>Streamlined the data processing workflow by transforming raw CSV data into actionable insights, significantly reducing manual effort and processing time by <span className='text-teal-500 font-bold'>95%</span>.</li>
-                                                    <li>Created a <span className='text-teal-500 font-bold'>database</span> system to store and compare previously analyzed results with newer data, facilitating identification of significant changes and trends over time.</li>
-                                                </ul>
-                                            </Timeline.Body>
-                                        </Timeline.Content>
-                                    </Timeline.Item>
-                                    <Timeline.Item>
-                                        <Timeline.Point />
-                                        <Timeline.Content>
-                                            <Timeline.Time>
-                                                June 2023 - May 2024
-                                            </Timeline.Time>
-                                            <Timeline.Title>
-                                                Software Engineer Intern @ <a href="https://www.medleynetworks.com" target="_blank" className='text-cyan-400 font-bold'>Medley Networks Inc.</a>
-                                            </Timeline.Title>
-                                            <Timeline.Body>
-                                                <ul className='px-5 text-md text-gray-800 dark:text-gray-400 leading-7 ' style={{ listStyleType: 'circle' }}>
-                                                    <li>Designed and developed an <span className='text-teal-500 font-bold'>Android application</span> that streamlined the process of capturing and labeling pictures for employees, improving efficiency and accuracy in data management.</li>
-                                                    <li>Integrated Dropbox API into the Android app, automating the upload process and enabling seamless synchronization of labeled pictures to a shared Dropbox folder for convenient access and collaboration.</li>
-                                                    <li>Created <span className='text-teal-500 font-bold'>Python scripts</span> leveraging the Pandas and Excel libraries to automate various manual tasks for employees, significantly reducing the time and effort required for data processing and analysis by <span className='text-teal-500 font-bold'>95%</span>.</li>
-                                                </ul>
-                                            </Timeline.Body>
-                                        </Timeline.Content>
-                                    </Timeline.Item>
-                                    <Timeline.Item>
-                                        <Timeline.Point />
-                                        <Timeline.Content>
-                                            <Timeline.Time>
-                                                September 2020 - August 2021
-                                            </Timeline.Time>
-                                            <Timeline.Title>
-                                                Software Engineer Intern @ <a href="https://www.prudential.com" target="_blank" className='text-cyan-400 font-bold'>Prudential Financial</a>
-                                            </Timeline.Title>
-                                            <Timeline.Body>
-                                                <ul className='px-5 text-gray-800 dark:text-gray-400 leading-7' style={{ listStyleType: 'circle' }}>
-                                                    <li>Developed automated test scripts using <span className='text-teal-500 font-bold'>Java and Selenium WebDriver</span>, enhancing the efficiency and accuracy of software testing processes.</li>
-                                                    <li>Collaborated with the development team to design and implement custom applications using <span className='text-teal-500 font-bold'>SerivceNow and JavaScript</span>, resulting in streamlined workflows and improved user experience.</li>
-                                                    <li>Maintained and expanded a comprehensive testing framework for web applications, ensuring high-quality software releases and reducing manual testing efforts by <span className='text-teal-500 font-bold'>90%</span>.</li>
-                                                    <li>Utilized <span className='text-teal-500 font-bold'>Tableau</span> to analyze and visualize data related to service requests, enabling stakeholders to make data-driven decisions and identify areas for process optimization.</li>
-                                                </ul>
-                                            </Timeline.Body>
-                                        </Timeline.Content>
-                                    </Timeline.Item>
-                                    <Timeline.Item>
-                                        <Timeline.Point />
-                                        <Timeline.Content>
-                                            <Timeline.Time>
-                                                July 2020 - August 2021
-                                            </Timeline.Time>
-                                            <Timeline.Title>
-                                                Programming Tutor @ <a href="https://www.codeninjas.com" target="_blank" className='text-cyan-400 font-bold'>Code Ninjas</a>
-                                            </Timeline.Title>
-                                            <Timeline.Body>
-                                                <ul className='px-5 text-gray-800 dark:text-gray-400 leading-7' style={{ listStyleType: 'circle' }}>
-                                                    <li>Designed and delivered engaging computer science lessons to students of varying ages, introducing them to the fundamentals of coding through languages such as <span className='text-teal-500 font-bold'>JavaScript</span>, <span className='text-teal-500 font-bold'>Python</span>, <span className='text-teal-500 font-bold'>Unity</span>, Minecraft modding, and Scratch.</li>
-                                                    <li>Developed age-appropriate curriculum and instructional materials to facilitate hands-on learning experiences, ensuring students grasped coding concepts effectively while fostering creativity and problem-solving skills.</li>
-                                                    <li>Implemented innovative teaching methodologies, including project-based learning and interactive coding exercises, to make complex programming concepts accessible and engaging for students.</li>
-                                                </ul>
-                                            </Timeline.Body>
-                                        </Timeline.Content>
-                                    </Timeline.Item>
-                                </Timeline>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    <div className='py-10'></div>
-
-                    <motion.div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto' animate={inView1 ? "visible" : "hidden"}
-                        variants={variants}
-                        exit="hidden"
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        ref={ref1}>
-                        <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>education</h3>
-                        <div className='flex items-center gap-5 py-5'>
-                            <Image src={umdLogo} width={100} height={100} alt='umdlogo'></Image>
-                            <div className='text-gray-800 dark:text-gray-400 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 flex-1'>
-                                <p className='font-bold'>Bachelor of Computer Science</p>
-                                <p>2021-2025</p>
-                                <p>University of Maryland, College Park, Maryland</p>
-                            </div>
-                        </div>
-                        <div className='flex items-center gap-5 py-5'>
-                            <Image src={mcstLogo} width={100} height={100} alt='msctlogo'></Image>
-                            <div className='text-gray-800 dark:text-gray-400 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800 flex-1'>
-                                <p className='font-bold'>Academy of Computer & Information Sciences</p>
-                                <p>2017-2021</p>
-                                <p>Morris County School of Technology, Denville, New Jersey</p>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    <div className='py-10'></div>
-
-                    <motion.div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto' animate={inView2 ? "visible" : "hidden"}
-                        variants={variants}
-                        exit="hidden"
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        ref={ref2}>
-                        <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>coursework</h3>
-                        <ul className='text-gray-800 dark:text-gray-400 font-bold grid grid-cols-1 sm:grid-cols-2 gap-4'>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Object-Oriented Programming I<p className='font-normal'>CMSC131 - UMD</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Object-Oriented Programming II<p className='font-normal'>CMSC132 - UMD</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Introduction to Computer Systems<p className='font-normal'>CMSC216 - UMD</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Discrete Structures<p className='font-normal'>CMSC250 - UMD</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Organization of Programming Languages<p className='font-normal'>CMSC330 - UMD</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Algorithms<p className='font-normal'>CMSC351 - UMD</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Introduction to Compilers<p className='font-normal'>CMSC430 - UMD</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Introduction to Data Science<p className='font-normal'>CMSC320 - UMD</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Advanced Data Structures<p className='font-normal'>CMSC420 - UMD</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>Computer Vision<p className='font-normal'>CMSC426 - UMD</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>AP Computer Science Principles<p className='font-normal'>MCST</p></li>
-                            <li className='shadow-lg p-3 rounded-xl my-1 dark:bg-gray-800 leading-8'>AP Computer Science A<p className='font-normal'>MCST</p></li>
-                        </ul>
-
-                    </motion.div>
-
-                    <div className='py-10'></div>
-
-                    <motion.div className='max-w-xs sm:max-w-sm md:max-w-3xl lg:max-w-5xl mx-auto' animate={inView3 ? "visible" : "hidden"}
-                        variants={variants}
-                        exit="hidden"
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        ref={ref3}>
-                        <h3 className='text-3xl py-5 text-gray-800 font-bold md:text-4xl dark:text-gray-200'>other</h3>
-                        <ul className='text-gray-800 dark:text-gray-400 font-bold'>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Hardware Automation Engineer | CubeSat Team<p className='font-normal'>Students for the Exploration and Development of Space @ UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Member | South Asian Student Association<p className='font-normal'>SASA @ UMD</p></li>
-                            <li className='mb-3 shadow-lg p-3 rounded-xl my-3 dark:bg-gray-800'>Head of Logistics | HackMCST<p className='font-normal'>Hackathon @ MCST</p></li>
-                        </ul>
-                    </motion.div>
-                    <div className='py-10'></div>
-
-                </section>
-            </main>
+          <aside className="lg:sticky lg:top-20 hidden lg:block">
+            <TerminalWindow title="/status">
+              <div className="text-sm space-y-2 text-gruv-fg1">
+                <div className="flex justify-between">
+                  <span className="text-gruv-gray">role</span>
+                  <span>Engineer</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gruv-gray">status</span>
+                  <span className="text-gruv-green">open</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gruv-gray">base</span>
+                  <span>Newark, DE</span>
+                </div>
+              </div>
+            </TerminalWindow>
+          </aside>
         </div>
-    );
+      </div>
+
+      <PixelDecor className="fixed bottom-0 left-0 hidden lg:block" />
+
+      <footer className="text-center text-xs text-gruv-gray py-8 font-mono">
+        <span className="text-gruv-yellow">guest@aneesh</span>
+        <span className="text-gruv-gray">:</span>
+        <span className="text-gruv-blue">~/experience</span>
+        <span className="text-gruv-gray">$ </span>
+        <span className="terminal-cursor-static" />
+        <br />
+        <span className="mt-2 inline-block text-gruv-neutral">
+          © {mounted ? new Date().getFullYear() : ""} Aneesh Sharma
+        </span>
+      </footer>
+    </div>
+  );
 }

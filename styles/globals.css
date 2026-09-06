@@ -3,22 +3,110 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --gruv-bg: #1d2021;
+  --gruv-bg0: #282828;
+  --gruv-fg: #ebdbb2;
+  --gruv-yellow: #fabd2f;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  html {
+    background-color: #141617;
+    overflow-y: scroll;
+  }
+
+  body {
+    background-color: #141617;
+    color: #ebdbb2;
+    font-family: "JetBrains Mono", "IBM Plex Mono", "Fira Code", ui-monospace, monospace;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(235, 219, 178, 0.25);
+    color: #ebdbb2;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1d2021;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3c3836;
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #504945;
+  }
 }
 
-@font-face{
-  font-family: "burtons";
-  src: url('../public/Burtons.otf')
+@layer components {
+  .terminal-cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1em;
+    margin-left: 2px;
+    background: #fabd2f;
+    vertical-align: -0.1em;
+    animation: blink 1s step-end infinite;
+  }
+
+  .terminal-cursor-static {
+    display: inline-block;
+    width: 0.6em;
+    height: 1em;
+    margin-left: 2px;
+    background: #fabd2f;
+    vertical-align: -0.1em;
+    opacity: 0.5;
+  }
+
+  .terminal-cursor::after {
+    display: none;
+  }
+
+  .noise-bg {
+    background-image: radial-gradient(
+        circle at 50% 50%,
+        rgba(29, 32, 33, 0),
+        rgba(20, 22, 23, 0.85)
+      ),
+      radial-gradient(
+        circle at 20% 10%,
+        rgba(40, 40, 40, 0.35),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 85% 90%,
+        rgba(40, 40, 40, 0.3),
+        transparent 40%
+      );
+  }
+
+  .pixel-border {
+    box-shadow:
+      0 0 0 1px rgba(146, 131, 116, 0.18),
+      0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+
+  .pixel-corners {
+    position: relative;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.image-rendering-pixel {
+  image-rendering: pixelated;
 }
