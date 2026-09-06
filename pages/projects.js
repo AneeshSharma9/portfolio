@@ -119,7 +119,7 @@ export default function Projects() {
             </TerminalWindow>
           </main>
 
-          <aside className="lg:sticky lg:top-20 hidden lg:block">
+          <aside className="hidden lg:block">
             <TerminalWindow title="/status">
               <div className="text-sm space-y-2 text-gruv-fg1">
                 <div className="flex justify-between">

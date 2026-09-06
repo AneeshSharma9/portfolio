@@ -68,6 +68,7 @@ html.light .nav-active {
   html {
     background-color: #141617;
     overflow-y: scroll;
+    overflow-x: clip;
   }
 
   html.light {
@@ -80,6 +81,7 @@ html.light .nav-active {
     font-family: "JetBrains Mono", "IBM Plex Mono", "Fira Code", ui-monospace, monospace;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 
   html.light body {

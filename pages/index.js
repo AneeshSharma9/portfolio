@@ -168,7 +168,7 @@ export default function Home() {
           </main>
 
           {/* Right info column */}
-          <aside className="lg:sticky lg:top-20 space-y-6">
+          <aside className="space-y-6">
             {/* ---------- /profile ---------- */}
             <TerminalWindow title="/profile">
               <div className="flex flex-col items-center text-center">

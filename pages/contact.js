@@ -196,7 +196,7 @@ export default function Contact() {
             </TerminalWindow>
           </main>
 
-          <aside className="lg:sticky lg:top-20 hidden lg:block">
+          <aside className="hidden lg:block">
             <TerminalWindow title="/reply_time">
               <div className="text-sm text-gruv-fg1 leading-6">
                 <p>

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import { useDesktop } from "./DesktopContext";
+import ResetHint from "./ResetHint";
 
 export default function StatusBar() {
   const [time, setTime] = useState("");
+  const { hasMoved } = useDesktop();
 
   useEffect(() => {
     const update = () => {
@@ -18,7 +21,9 @@ export default function StatusBar() {
   }, []);
 
   return (
-    <div className="w-full h-9 bg-gruv-bg1 border-b border-gruv-bg3 flex items-center justify-between px-4 text-xs text-gruv-fg2">
+    <div className="relative w-full h-9 bg-gruv-bg1 border-b border-gruv-bg3 flex items-center justify-between px-4 text-xs text-gruv-fg2">
+      {hasMoved && <ResetHint />}
+
       <div className="flex items-center gap-4">
         <span className="flex items-center gap-1.5">
           <span className="text-gruv-green">&#9679;</span>
