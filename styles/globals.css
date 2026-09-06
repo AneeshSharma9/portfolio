@@ -186,6 +186,18 @@ html.light .nav-active {
       0 8px 24px rgba(0, 0, 0, 0.45);
   }
 
+  .dot-red {
+    background-color: #fb4934;
+  }
+
+  .dot-yellow {
+    background-color: #fabd2f;
+  }
+
+  .dot-green {
+    background-color: #b8bb26;
+  }
+
   html.light .pixel-border {
     box-shadow:
       0 0 0 1px rgba(146, 131, 116, 0.25),
