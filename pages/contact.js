@@ -56,6 +56,19 @@ export default function Contact() {
     <div className="min-h-screen bg-gruv-bg1 noise-bg text-gruv-fg0 font-mono">
       <Head>
         <title>Aneesh Sharma — Contact</title>
+        <meta
+          name="description"
+          content="Get in touch with Aneesh Sharma, a software engineer. Send a message or connect on LinkedIn, GitHub, or Instagram."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Aneesh Sharma — Contact" />
+        <meta
+          property="og:description"
+          content="Get in touch with Aneesh Sharma, a software engineer."
+        />
+        <meta property="og:url" content="https://aneeshsharma9.github.io/portfolio/contact" />
+        <meta property="og:site_name" content="Aneesh Sharma" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="sticky top-0 z-40">

@@ -48,6 +48,30 @@ export default function Home() {
     <div className="min-h-screen bg-gruv-bg1 noise-bg text-gruv-fg0 font-mono">
       <Head>
         <title>Aneesh Sharma — Software Engineer</title>
+        <meta
+          name="description"
+          content="Portfolio of Aneesh Sharma, a software engineer specializing in backend and cloud integrations. Explore my projects, experience, and skills."
+        />
+        <meta
+          name="keywords"
+          content="Aneesh Sharma, software engineer, portfolio, backend developer, cloud integrations, full stack"
+        />
+        <meta name="author" content="Aneesh Sharma" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Aneesh Sharma — Software Engineer" />
+        <meta
+          property="og:description"
+          content="Portfolio of Aneesh Sharma, a software engineer specializing in backend and cloud integrations."
+        />
+        <meta property="og:url" content="https://aneeshsharma9.github.io/portfolio/" />
+        <meta property="og:site_name" content="Aneesh Sharma" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Aneesh Sharma — Software Engineer" />
+        <meta
+          name="twitter:description"
+          content="Portfolio of Aneesh Sharma, a software engineer specializing in backend and cloud integrations."
+        />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="sticky top-0 z-40">

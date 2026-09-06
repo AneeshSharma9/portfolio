@@ -21,6 +21,19 @@ export default function Projects() {
     <div className="min-h-screen bg-gruv-bg1 noise-bg text-gruv-fg0 font-mono">
       <Head>
         <title>Aneesh Sharma — Projects</title>
+        <meta
+          name="description"
+          content="Projects by Aneesh Sharma including ViewVault, Propello, Shazamify, Stock Dashboard, Web Excel, and Vet Chat."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Aneesh Sharma — Projects" />
+        <meta
+          property="og:description"
+          content="Projects by Aneesh Sharma including ViewVault, Propello, Shazamify, Stock Dashboard, Web Excel, and Vet Chat."
+        />
+        <meta property="og:url" content="https://aneeshsharma9.github.io/portfolio/projects" />
+        <meta property="og:site_name" content="Aneesh Sharma" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="sticky top-0 z-40">

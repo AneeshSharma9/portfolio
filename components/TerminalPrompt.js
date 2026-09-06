@@ -6,7 +6,8 @@ export default function TerminalPrompt({
   showCursor = false,
   dim = true,
   typewriter = true,
-  typeSpeed = 45,
+  typeSpeed = 50,
+  startDelay = 450,
 }) {
   const [typed, setTyped] = useState(0);
 
@@ -16,17 +17,23 @@ export default function TerminalPrompt({
       return;
     }
     setTyped(0);
-    const interval = setInterval(() => {
-      setTyped((prev) => {
-        if (prev >= text.length) {
-          clearInterval(interval);
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, typeSpeed);
-    return () => clearInterval(interval);
-  }, [text, typewriter, typeSpeed]);
+    let interval = null;
+    const delay = setTimeout(() => {
+      interval = setInterval(() => {
+        setTyped((prev) => {
+          if (prev >= text.length) {
+            clearInterval(interval);
+            return prev;
+          }
+          return prev + 1;
+        });
+      }, typeSpeed);
+    }, startDelay);
+    return () => {
+      clearTimeout(delay);
+      if (interval) clearInterval(interval);
+    };
+  }, [text, typewriter, typeSpeed, startDelay]);
 
   return (
     <div className={`flex items-center font-mono ${className}`}>
