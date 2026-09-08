@@ -54,76 +54,100 @@ export default function Projects() {
                 {data.map((item, index) => (
                   <div
                     key={item.id}
-                    className="group py-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 transition-colors hover:bg-gruv-bg0/40 px-2 -mx-2"
+                    className="group py-5 transition-colors hover:bg-gruv-bg0/40 px-2 -mx-2"
                   >
-                    <div className="flex items-center gap-3 sm:gap-6 w-full min-w-0">
+                    <div className="grid grid-cols-[auto_1fr] sm:flex sm:items-center gap-x-3 sm:gap-6">
                       <span className="text-gruv-gray text-sm w-8 shrink-0">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      {item.image && (
-                        <div className="shrink-0">
-                          <Image
-                            src={item.image}
-                            alt={`${item.name} screenshot`}
-                            width={48}
-                            height={48}
-                            className="w-auto h-8 object-contain"
-                          />
-                        </div>
-                      )}
                       <div className="min-w-0">
+                        <div className="flex items-start sm:items-center gap-3 sm:gap-6">
+                          {item.image && (
+                            <div className="shrink-0">
+                              <Image
+                                src={item.image}
+                                alt={`${item.name} screenshot`}
+                                width={48}
+                                height={48}
+                                className="w-auto h-8 object-contain"
+                              />
+                            </div>
+                          )}
+                          <div className="min-w-0">
+                            <a
+                              href={item.live || item.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-3 group/name"
+                            >
+                              <span className="text-gruv-fg0 font-medium group-hover:text-gruv-yellow transition-colors">
+                                {item.name}
+                              </span>
+                              <span className="text-gruv-aqua opacity-0 -translate-x-1 group-hover/name:opacity-100 group-hover/name:translate-x-0 transition-all">
+                                &#8594;
+                              </span>
+                            </a>
+                            {item.description && (
+                              <p className="text-gruv-fg2 text-[13px] leading-6 mt-1">
+                                <span className="text-gruv-gray">#</span>{" "}
+                                {item.description}
+                              </p>
+                            )}
+                            {item.tech?.length > 0 && (
+                              <div className="mt-2 flex flex-wrap gap-1.5">
+                                {item.tech.map((t) => (
+                                  <span
+                                    key={t}
+                                    className="px-1.5 py-0.5 border border-gruv-bg3 text-gruv-aqua text-[11px] leading-4 rounded-sm"
+                                  >
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                            <div className="flex items-center gap-3 text-xs mt-2 sm:hidden">
+                              {item.live && (
+                                <a
+                                  href={item.live}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-gruv-green hover:text-gruv-aqua transition-colors"
+                                >
+                                  [live]
+                                </a>
+                              )}
+                              <a
+                                href={item.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gruv-blue hover:text-gruv-aqua transition-colors"
+                              >
+                                [code]
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="hidden sm:flex items-center gap-3 text-xs sm:ml-auto sm:shrink-0">
+                        {item.live && (
+                          <a
+                            href={item.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gruv-green hover:text-gruv-aqua transition-colors"
+                          >
+                            [live]
+                          </a>
+                        )}
                         <a
                           href={item.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-3 group/name"
+                          className="text-gruv-blue hover:text-gruv-aqua transition-colors"
                         >
-                          <span className="text-gruv-fg0 font-medium group-hover:text-gruv-yellow transition-colors">
-                            {item.name}
-                          </span>
-                          <span className="text-gruv-aqua opacity-0 -translate-x-1 group-hover/name:opacity-100 group-hover/name:translate-x-0 transition-all">
-                            &#8594;
-                          </span>
+                          [code]
                         </a>
-                        {item.description && (
-                          <p className="text-gruv-fg2 text-[13px] leading-6 mt-1">
-                            <span className="text-gruv-gray">#</span>{" "}
-                            {item.description}
-                          </p>
-                        )}
-                        {item.tech?.length > 0 && (
-                          <div className="mt-2 flex flex-wrap gap-1.5">
-                            {item.tech.map((t) => (
-                              <span
-                                key={t}
-                                className="px-1.5 py-0.5 border border-gruv-bg3 text-gruv-aqua text-[11px] leading-4 rounded-sm"
-                              >
-                                {t}
-                              </span>
-                            ))}
-                          </div>
-                        )}
                       </div>
-                    </div>
-                    <div className="sm:ml-auto flex items-center gap-3 text-xs ml-11 shrink-0">
-                      {item.live && (
-                        <a
-                          href={item.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gruv-green hover:text-gruv-aqua transition-colors"
-                        >
-                          [live]
-                        </a>
-                      )}
-                      <a
-                        href={item.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gruv-blue hover:text-gruv-aqua transition-colors"
-                      >
-                        [code]
-                      </a>
                     </div>
                   </div>
                 ))}
