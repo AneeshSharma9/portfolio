@@ -73,7 +73,7 @@ export default function Home() {
           property="og:description"
           content="Portfolio of Aneesh Sharma, a software engineer specializing in backend and cloud integrations."
         />
-        <meta property="og:url" content="https://aneeshsharma9.github.io/portfolio/" />
+        <meta property="og:url" content="https://aneeshsharma.dev/" />
         <meta property="og:site_name" content="Aneesh Sharma" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Aneesh Sharma — Software Engineer" />

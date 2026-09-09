@@ -31,7 +31,7 @@ export default function Projects() {
           property="og:description"
           content="Projects by Aneesh Sharma including ViewVault, Propello, Shazamify, Stock Dashboard, Web Excel, and Vet Chat."
         />
-        <meta property="og:url" content="https://aneeshsharma9.github.io/portfolio/projects" />
+        <meta property="og:url" content="https://aneeshsharma.dev/projects" />
         <meta property="og:site_name" content="Aneesh Sharma" />
         </Head>
 

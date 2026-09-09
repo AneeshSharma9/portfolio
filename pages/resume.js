@@ -131,7 +131,7 @@ export default function Resume() {
           property="og:description"
           content="Experience, education, and coursework of Aneesh Sharma, a software engineer."
         />
-        <meta property="og:url" content="https://aneeshsharma9.github.io/portfolio/resume" />
+        <meta property="og:url" content="https://aneeshsharma.dev/resume" />
         <meta property="og:site_name" content="Aneesh Sharma" />
         </Head>
 

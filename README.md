@@ -1,7 +1,7 @@
 # **Web Portfolio**
 
 ## 🔗 Links
-Access portfolio: https://aneeshsharma9.github.io/portfolio/
+Access portfolio: https://aneeshsharma.dev
 
 ## 📜 Description
 Web portfolio to demonstrate my capabilities and display my personal projects

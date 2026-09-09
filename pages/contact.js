@@ -66,7 +66,7 @@ export default function Contact() {
           property="og:description"
           content="Get in touch with Aneesh Sharma, a software engineer."
         />
-        <meta property="og:url" content="https://aneeshsharma9.github.io/portfolio/contact" />
+        <meta property="og:url" content="https://aneeshsharma.dev/contact" />
         <meta property="og:site_name" content="Aneesh Sharma" />
         </Head>
 
